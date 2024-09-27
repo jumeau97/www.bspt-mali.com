@@ -4,10 +4,118 @@
   <meta charset="utf-8">
   <title>SiteBstpMali</title>
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  	<!-- META -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="robots" content="" />    
+    <meta name="description" content="" />
+    
+    <!-- FAVICONS ICON -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png" />
+
+    
+    <!-- MOBILE SPECIFIC -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+    <!-- BOOTSTRAP STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <!-- FONTAWESOME STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="assets/css/fontawesome/css/font-awesome.min.css" />
+    <!-- FLATICON STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="assets/css/flaticon.min.css">
+    <!-- ANIMATE STYLE SHEET --> 
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.min.css">
+    <!-- OWL CAROUSEL STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.min.css">
+    <!-- BOOTSTRAP SELECT BOX STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-select.min.css">
+    <!-- MAGNIFIC POPUP STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="assets/css/magnific-popup.min.css">
+    <!-- LOADER STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="assets/css/loader.min.css">    
+    <!-- MAIN STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- THEME COLOR CHANGE STYLE SHEET -->
+	<link rel="stylesheet" class="skin" type="text/css" href="assets/css/skin/skin-1.css">
+    <!-- CUSTOM  STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+    
+
+    
+    <!-- REVOLUTION SLIDER CSS -->
+    <!-- <link rel="stylesheet" type="text/css" href="assets/plugins/revolution/revolution/css/settings.css"> -->
+    <!-- REVOLUTION NAVIGATION STYLE -->
+    <!-- <link rel="stylesheet" type="text/css" href="assets/plugins/revolution/revolution/css/navigation.css"> -->
+    
+    <!-- GOOGLE FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,400italic,500,500italic,700,700italic,900italic,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800italic,800,700italic' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round:400,400i&amp;subset=latin-ext" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="js/angular-revolution.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Sélectionnez tous les éléments que vous souhaitez animer (les cartes)
+        const cards = document.querySelectorAll('.fade-in');
+    
+        // Créez un observer pour surveiller la visibilité des cartes
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Lorsque l'élément entre dans la fenêtre d'affichage, on ajoute la classe visible
+              entry.target.classList.add('visible');
+              // Une fois que l'animation est lancée, arrêtez d'observer cet élément
+              observer.unobserve(entry.target);
+            }
+          });
+        });
+    
+        // Observez chaque carte
+        cards.forEach(card => {
+          observer.observe(card);
+        });
+      });
+    </script>
+    
 </head>
-<body>
+<body id="bg">
   <app-root></app-root>
+      <!-- STYLE SWITCHER END ==== -->
+
+<!-- JAVASCRIPT  FILES ========================================= --> 
+<script src="assets/js/jquery-3.7.1.min.assets/"></script><!-- JQUERY.MIN JS -->
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
+<script src="assets/js/bootstrap-select.min.js"></script><!-- FORM JS -->
+<script src="assets/js/jquery.bootstrap-touchspin.min.js"></script><!-- FORM JS -->
+<script src="assets/js/magnific-popup.min.js"></script><!-- MAGNIFIC-POPUP JS -->
+<script src="assets/js/waypoints.min.js"></script><!-- WAYPOINTS JS -->
+<script src="assets/js/counterup.min.js"></script><!-- COUNTERUP JS -->
+<script src="assets/js/waypoints-sticky.min.js"></script><!-- COUNTERUP JS -->
+<script src="assets/js/isotope.pkgd.min.js"></script><!-- MASONRY  -->
+<script src="assets/js/imagesloaded.pkgd.min.js"></script><!-- MASONRY  -->
+<script src="assets/js/owl.carousel.min.js"></script><!-- OWL  SLIDER  -->
+<script  src="assets/js/theia-sticky-sidebar.js"></script><!-- STICKY SIDEBAR  -->
+<script src="assets/js/jquery.owl-filter.js"></script>
+<script src="assets/js/scrolla.min.js"></script><!-- ON SCROLL CONTENT ANIMTE   --> 
+<script src="assets/js/shortcode.js"></script><!-- SHORTCODE FUCTIONS  -->
+
+<script src="assets/js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
+
+
+
+<!-- <script  src="assets/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js"></script> -->
+<!-- <script  src="assets/plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js"></script> -->
+
+<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->	
+<!-- <script  src="assets/plugins/revolution/revolution/js/extensions/revolution-plugin.js"></script> -->
+
+<!-- REVOLUTION SLIDER SCRIPT FILES -->
+<!-- <script src="assets/js/rev-script-1.js"></script> -->
 </body>
 </html>
