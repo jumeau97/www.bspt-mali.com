@@ -11,6 +11,7 @@
     <meta name="author" content="" />
     <meta name="robots" content="" />    
     <meta name="description" content="" />
+
     
     <!-- FAVICONS ICON -->
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
@@ -31,7 +32,7 @@
     <!-- ANIMATE STYLE SHEET --> 
     <link rel="stylesheet" type="text/css" href="assets/css/animate.min.css">
     <!-- OWL CAROUSEL STYLE SHEET -->
-    <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.min.css"> -->
     <!-- BOOTSTRAP SELECT BOX STYLE SHEET -->
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-select.min.css">
     <!-- MAGNIFIC POPUP STYLE SHEET -->
@@ -44,13 +45,11 @@
 	<link rel="stylesheet" class="skin" type="text/css" href="assets/css/skin/skin-1.css">
     <!-- CUSTOM  STYLE SHEET -->
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
-    
 
+        
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/navbars-offcanvas/">
+    <link href="navbar.css" rel="stylesheet">
     
-    <!-- REVOLUTION SLIDER CSS -->
-    <!-- <link rel="stylesheet" type="text/css" href="assets/plugins/revolution/revolution/css/settings.css"> -->
-    <!-- REVOLUTION NAVIGATION STYLE -->
-    <!-- <link rel="stylesheet" type="text/css" href="assets/plugins/revolution/revolution/css/navigation.css"> -->
     
     <!-- GOOGLE FONTS -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,400italic,500,500italic,700,700italic,900italic,900' rel='stylesheet' type='text/css'>
@@ -86,6 +85,30 @@
 <body id="bg">
   <app-root></app-root>
       <!-- STYLE SWITCHER END ==== -->
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx = document.getElementById('myChart');
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+              label: '# of Votes',
+              data: [12, 19, 3, 5, 2, 3],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
 
 <!-- JAVASCRIPT  FILES ========================================= --> 
 <script src="assets/js/jquery-3.7.1.min.assets/"></script><!-- JQUERY.MIN JS -->
@@ -99,7 +122,7 @@
 <script src="assets/js/waypoints-sticky.min.js"></script><!-- COUNTERUP JS -->
 <script src="assets/js/isotope.pkgd.min.js"></script><!-- MASONRY  -->
 <script src="assets/js/imagesloaded.pkgd.min.js"></script><!-- MASONRY  -->
-<script src="assets/js/owl.carousel.min.js"></script><!-- OWL  SLIDER  -->
+<!-- <script src="assets/js/owl.carousel.min.js"></script> -->
 <script  src="assets/js/theia-sticky-sidebar.js"></script><!-- STICKY SIDEBAR  -->
 <script src="assets/js/jquery.owl-filter.js"></script>
 <script src="assets/js/scrolla.min.js"></script><!-- ON SCROLL CONTENT ANIMTE   --> 
@@ -107,15 +130,5 @@
 
 <script src="assets/js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
 
-
-
-<!-- <script  src="assets/plugins/revolution/revolution/js/jquery.themepunch.tools.min.js"></script> -->
-<!-- <script  src="assets/plugins/revolution/revolution/js/jquery.themepunch.revolution.min.js"></script> -->
-
-<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->	
-<!-- <script  src="assets/plugins/revolution/revolution/js/extensions/revolution-plugin.js"></script> -->
-
-<!-- REVOLUTION SLIDER SCRIPT FILES -->
-<!-- <script src="assets/js/rev-script-1.js"></script> -->
 </body>
 </html>

@@ -3,15 +3,15 @@
 =====================*/
 
 ::selection {
-	background: #d21e2b;
+	background: #34789b;
 }
 
 ::-moz-selection {
-	background: #d21e2b;
+	background: #34789b;
 }
 
 ::-webkit-selection {
-	background: #d21e2b;
+	background: #34789b;
 }
 
 
@@ -101,7 +101,7 @@ ol.list-num-count>li::before,
 .contact-home1-left::after, .contact-home1-left::before,
 .searchform input[type="submit"],
 .overlay-icon a{
-	background-color: #d21e2b;
+	background-color: #34789b;
 }
 
 .overlay-icon a:hover{
@@ -110,7 +110,7 @@ ol.list-num-count>li::before,
 /* Premery hex buttons bg color*/
 
 .site-button {
-	background-color: #d21e2b;
+	background-color: #34789b;
 }
 
 .site-button:hover,
@@ -123,13 +123,13 @@ ol.list-num-count>li::before,
 /* other hex buttons bg color*/
 
 .searchform input[type="submit"] {
-	background-color: #d21e2b;
+	background-color: #34789b;
 }
 
 .searchform input[type="submit"]:hover,
 .searchform input[type="submit"]:focus,
 .searchform input[type="submit"]:active {
-	background-color: #d21e2b;
+	background-color: #34789b;
 }
 
 
@@ -230,14 +230,14 @@ ol.comment-list li.comment .reply a,
 .video-play-btn,
 blockquote::before
  {
-	color: #d21e2b;
+	color: #34789b;
 }
 
 @media only screen and (max-width: 991px) {
 	.site-bg-primary .header-nav .nav>li:hover>a,
 	.site-bg-primary .header-nav .nav>li.active>a,
 	.site-bg-primary .header-nav .nav>li.current-menu-item>a {
-		color: #d21e2b;
+		color: #34789b;
 	}
 }
 
@@ -278,7 +278,7 @@ input[type=radio]+label:hover:before,
 .masonry-filter.outline-style.has-bg > li a:hover,
 ol.list-num-count.list-outline > li::before
  {
-	border-color: #d21e2b;
+	border-color: #34789b;
 }
 
 

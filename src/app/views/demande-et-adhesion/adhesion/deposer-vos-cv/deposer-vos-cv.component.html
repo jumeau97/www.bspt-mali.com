@@ -1,0 +1,121 @@
+<!-- INNER PAGE BANNER -->
+<div
+  class="wt-bnr-inr overlay-wraper"
+  style="background-image: url(images/banner/faq-banner.jpg)"
+>
+  <div class="overlay-main bg-black opacity-07"></div>
+  <div class="container">
+    <div class="wt-bnr-inr-entry">
+      <h1 class="text-white">PROGRAMMES D'AMELIORATION CONTINU</h1>
+      <!-- BREADCRUMB ROW -->
+      <ul class="wt-breadcrumb breadcrumb-style-2">
+        <li>
+          <a href="javascript:void(0);"><i class="fa fa-home"></i> Accueil</a>
+        </li>
+        <li>Programmes d'amélioration continu</li>
+      </ul>
+      <!-- BREADCRUMB ROW END -->
+    </div>
+  </div>
+</div>
+<!-- INNER PAGE BANNER END -->
+
+<!-- SECTION CONTENT -->
+<div class="section-full p-t80 p-b50">
+  <div class="container">
+    <div class="row">
+      <!-- SIDE BAR START -->
+      <div class="col-lg-4 col-md-5 m-b30">
+        <div class="wt-team-seven radius-md">
+          <div class="wt-team-media wt-img-effect off-color">
+            <img src="assets/images/our-team5/pic1.jpg" class="" alt="" />
+          </div>
+       
+        </div>
+      </div>
+      <!-- SIDE BAR END -->
+
+      <div class="col-lg-8 col-md-7 m-b30">
+        <div class="section-head">
+          <h2 class="text-uppercase">DÉPOSER VOS CV</h2>
+          <div class="wt-separator-outer">
+            <div class="wt-separator site-bg-primary"></div>
+          </div>
+          <p>
+            Ce sous menu offre la possibilité aux experts, aux chercheurs
+            d’emplois, aux personnes ayant des compétences avérées dans les
+            domaines spécifiques de poster en ligne leur CV.
+          </p>
+        </div>
+
+        <div class="wt-box bdr-4 bdr-gray-light p-a30">
+          <form>
+            <div class="row">
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label>Nom</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Entrez votre nom"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6">
+                <div class="form-group">
+                  <label>Prénom</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Entrez votre prénom"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="card flex justify-content-center m-b20">
+              <p-fileUpload
+                [showUploadButton]="false"
+                cancelStyleClass="p-button p-button-secondary"
+                chooseLabel="Choisir"
+                cancelLabel="Annuler"
+                name="demo[]"
+                url="https://www.primefaces.org/cdn/api/upload.php"
+                [multiple]="false"
+                accept="application/pdf"
+              >
+                <ng-template pTemplate="toolbar">
+                  <div class="py-3">
+                    Le fichier d’appel d’offre doit obligatoirement être au
+                    format PDF
+                  </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                  <div>Glisser-Déposer ou Sélectionner un fichier ici...</div>
+                </ng-template>
+              </p-fileUpload>
+            </div>
+
+            <!-- <div> -->
+            <button
+              type="submit"
+              value="submit"
+              class="site-button site-bg-primary"
+            >
+              Soumettre
+            </button>
+            <button
+              type="submit"
+              value="submit"
+              class="site-button site-button-secondry m-3"
+            >
+              Annuler
+            </button>
+            <!-- </div> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- SECTION CONTENT END -->
