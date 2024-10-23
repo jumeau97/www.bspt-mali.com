@@ -90,6 +90,7 @@ import { GuideUtilisateurComponent } from './views/demande-et-adhesion/guide-uti
 import { FileUploadModule } from 'primeng/fileupload';
 import { ActualiteDetailsComponent } from './views/presse-et-media/actualites/actualite-details/actualite-details.component';
 import { FooterComponent } from './views/menus/footer/footer.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 // import { GalleriaModule } from 'primeng/galleria';
 // import { InplaceModule } from 'primeng/inplace';
 // import { InputMaskModule } from 'primeng/inputmask';
@@ -311,7 +312,7 @@ import { FooterComponent } from './views/menus/footer/footer.component';
 
     
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }], //gestion de la redirection
   bootstrap: [AppComponent]
 })
 export class AppModule { }
