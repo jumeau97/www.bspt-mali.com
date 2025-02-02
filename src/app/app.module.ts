@@ -90,6 +90,8 @@ import { GuideUtilisateurComponent } from './views/demande-et-adhesion/guide-uti
 import { FileUploadModule } from 'primeng/fileupload';
 import { ActualiteDetailsComponent } from './views/presse-et-media/actualites/actualite-details/actualite-details.component';
 import { FooterComponent } from './views/menus/footer/footer.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
+import { HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 // import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 // import { GalleriaModule } from 'primeng/galleria';
 // import { InplaceModule } from 'primeng/inplace';
@@ -130,7 +132,9 @@ import { FooterComponent } from './views/menus/footer/footer.component';
 // import { SpinnerModule } from 'primeng/spinner';
 // import { SplitButtonModule } from 'primeng/splitbutton';
 // import { SplitterModule } from 'primeng/splitter';
-// import { StepsModule } from 'primeng/steps';
+import { StepsModule } from 'primeng/steps';
+import { TestComponent } from './views/test/test.component';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { TabMenuModule } from 'primeng/tabmenu';
 // import { TableModule } from 'primeng/table';
 // import { TabViewModule } from 'primeng/tabview';
@@ -206,12 +210,15 @@ import { FooterComponent } from './views/menus/footer/footer.component';
     GuideUtilisateurComponent,
     ActualiteDetailsComponent,
     FooterComponent,
+    NotFoundComponent,
+    TestComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     NgbPaginationModule,
      NgbAlertModule,
      CountUpModule,
@@ -219,6 +226,7 @@ import { FooterComponent } from './views/menus/footer/footer.component';
      BrowserAnimationsModule,
      NgChartsModule,
      ChartModule,
+     ReactiveFormsModule,
     //  AvatarModule,
     //  AvatarGroupModule,
     //  BrowserModule,
@@ -291,7 +299,7 @@ import { FooterComponent } from './views/menus/footer/footer.component';
     //  SpinnerModule,
     //  SplitterModule,
     //  SplitButtonModule,
-    //  StepsModule,
+     StepsModule,
     //  TableModule,
     //  TabMenuModule,
     //  TabViewModule,
@@ -312,7 +320,7 @@ import { FooterComponent } from './views/menus/footer/footer.component';
 
     
   ],
-  providers: [], //gestion de la redirection
+  providers: [{provide: HashLocationStrategy, useClass: PathLocationStrategy}], //gestion de la redirection
   bootstrap: [AppComponent]
 })
 export class AppModule { }

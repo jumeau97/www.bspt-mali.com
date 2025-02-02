@@ -397,9 +397,7 @@ export class AppComponent {
 
 
 
-  ngOnInit() {
   
-  }
   // images = [700, 533, 807, 124].map((n) => `https://picsum.photos/id/${n}/900/500`);
   images = [
     'assets/images/main-slider/slide3_3.jpg',

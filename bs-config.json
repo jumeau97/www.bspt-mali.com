@@ -1,0 +1,7 @@
+{
+    "port": 8003,
+    "files": ["./src/**/*.{html,htm,css,js}"],
+    "server": { "baseDir": "./dist/site_bstp_mali" }
+  }
+ 
+  

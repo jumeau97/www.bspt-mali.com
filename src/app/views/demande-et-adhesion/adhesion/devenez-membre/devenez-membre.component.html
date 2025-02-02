@@ -45,9 +45,9 @@
             </p>
           </div>
 
-          <div class="wt-box bdr-4 bdr-gray-light p-a30">
+          <div >
             <form>
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-md-8 col-sm-6">
                   <div class="form-group">
                     <label>Raison social</label>
@@ -165,25 +165,222 @@
                   placeholder="Entrez l'activité principale"
                   rows="3"
                 ></textarea>
-              </div>
+              </div> -->
 
-              <!-- <div> -->
-              <button
+      
+              <!-- <button
                 type="submit"
                 value="submit"
                 class="site-button site-bg-primary"
               >
                 Envoyer
-              </button>
-              <button
+              </button> -->
+              <!-- <button
                 type="submit"
                 value="submit"
                 class="site-button site-button-secondry m-3"
               >
                 Annuler
-              </button>
-              <!-- </div> -->
+              </button> -->
+
             </form>
+            <div class="custom-stepper">
+              <!-- Étapes -->
+              <div class="stepper-header">
+                <div
+                  class="step"
+                  *ngFor="let step of steps; let i = index"
+                  [class.active]="currentStep === i"
+                  [class.completed]="i < currentStep"
+                  (click)="goToStep(i)"
+                >
+                  <span>{{ step.label }}</span>
+                </div>
+              </div>
+            
+              <!-- Formulaire actif -->
+              <div class="stepper-body">
+                <form *ngIf="currentStep === 0" [formGroup]="firstFormGroup">
+                  <h3>Étape 1 : Informations Générales</h3>
+                  <div class="row">
+                    <div class="col-md-8 col-sm-6">
+                      <div class="form-group">
+                        <label>Raison social</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Entrez la raison social"
+                          formControlName="raisonSociale"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                        <label>Année de création</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Entrez l'année de création"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                        <label>Statut juridique</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Entrez le statut juridique"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-8 col-sm-6">
+                      <div class="form-group">
+                        <label>Secteur d'activité</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Entrez le secteur d'activité"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                        <label>Répresenté par</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Entrez la représentation"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                        <label>Adresse e-mail</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Entrez l'adresse e-mail"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                        <label>Téléphone</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Entrez le numéro portable"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                        <label>Ville</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Entrez la ville"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                        <label>Localisation Exacte</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Entrez la localisation exacte"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                        <label>Boite Postale</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Entrez la boite postale"
+                        />
+                      </div>
+                    </div>
+                  </div>
+    
+                  <div class="form-group">
+                    <label>Activité Principale</label>
+                    <textarea
+                      name=""
+                      id=""
+                      class="form-control"
+                      placeholder="Entrez l'activité principale"
+                      rows="3"
+                    ></textarea>
+                  </div>
+                  <button  class="site-button site-bg-primary" (click)="nextStep()" [disabled]="firstFormGroup.invalid">
+                    Suivant
+                  </button>
+                </form>
+            
+                <form *ngIf="currentStep === 1" [formGroup]="secondFormGroup">
+                  <h3>Étape 2 : Choisissez le type de paiement</h3>
+                  <div class="form-group">
+                    <label>Type de paiement</label>
+                    <div>
+                      <input
+                        type="radio"
+                        formControlName="paymentType"
+                        value="electronic"
+                        id="electronic"
+                      />
+                      <label for="electronic">Paiement Électronique</label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        formControlName="paymentType"
+                        value="physique"
+                        id="physique"
+                      />
+                      <label for="physique">Paiement Physique</label>
+                    </div>
+                  </div>
+                  <button class="site-button site-button-secondry m-3"  (click)="previousStep()">Précedent</button>
+                  <button class="site-button site-button-primary"  (click)="nextStep()" [disabled]="secondFormGroup.invalid">
+                    Suivant
+                  </button>
+                </form>
+            
+                <form *ngIf="currentStep === 2" [formGroup]="thirdFormGroup">
+                  <h3>Étape 3 : Choisissez un moyen de paiement</h3>
+                  <div class="form-group" *ngIf="paymentType === 'electronic'">
+                    <label>Moyen de paiement électronique</label>
+                    <select formControlName="paymentMethod" class="form-control">
+                      <option value="Orange">SAMA Money</option>
+                      <option value="Orange">Orange Money</option>
+                      <option value="Orange">Moov Money</option>
+                      <option value="carteBancaire">Carte Visa</option>
+                    </select>
+                  </div>
+            
+                  <div class="form-group" *ngIf="paymentType === 'physique'">
+                    <label>Mode de paiement physique</label>
+                    <select formControlName="paymentMethod" class="form-control">
+                      <option value="especes">Espèces</option>
+                      <option value="cheque">Chèque</option>
+                    </select>
+                  </div>
+                  <button class="site-button site-button-secondry m-3"   (click)="previousStep()">Retour</button>
+                  <button class="site-button site-button-primary m-3" (click)="submitForm()">Soumettre les dossiers</button>
+                </form>
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>

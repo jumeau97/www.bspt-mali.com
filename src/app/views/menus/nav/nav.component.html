@@ -1,6 +1,7 @@
 <nav
-  class="navbar navbar-expand-lg navbar-dark bg-dark main-bar-wraper"
+  class="navbar navbar-expand-lg navbar-dark bg-dark main-bar-wraper sticky-navbar" [ngClass]="navbarFixed?'fixed-top':''"
   aria-label="Offcanvas navbar large main-bar header-botton nav-site-bg-primary"
+  #navbar
 >
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><img src="assets/images/bstp_mali.jpg" style="height: 40px;"  alt=""> </a>
@@ -33,7 +34,6 @@
         <div class="custom-header-nav navbar-collapse collapse justify-content-center">
           <ng-container *ngFor="let menu of menuItems; index as i">
             <ul class="nav navbar-nav" *ngIf="!menu.subMenu">
-              <!-- Menu principal -->
               <li [ngClass]="isActive(menu.link) ? 'active' : ''">
                 <a [routerLink]="menu.link">{{ menu.title }}</a>
               </li>

@@ -1,0 +1,83 @@
+<div class="custom-stepper">
+    <!-- Étapes -->
+    <div class="stepper-header">
+      <div
+        class="step"
+        *ngFor="let step of steps; let i = index"
+        [class.active]="currentStep === i"
+        [class.completed]="i < currentStep"
+        (click)="goToStep(i)"
+      >
+        <span>{{ step.label }}</span>
+      </div>
+    </div>
+  
+    <!-- Formulaire actif -->
+    <div class="stepper-body">
+      <form *ngIf="currentStep === 0" [formGroup]="firstFormGroup">
+        <h3>Étape 1 : Informations Générales</h3>
+        <div class="form-group">
+          <label>Raison sociale</label>
+          <input
+            type="text"
+            formControlName="raisonSociale"
+            class="form-control"
+            placeholder="Entrez la raison sociale"
+          />
+        </div>
+        <div class="form-group">
+          <label>Année de création</label>
+          <input
+            type="text"
+            formControlName="anneeCreation"
+            class="form-control"
+            placeholder="Entrez l'année de création"
+          />
+        </div>
+        <button (click)="nextStep()" [disabled]="firstFormGroup.invalid">
+          Suivant
+        </button>
+      </form>
+  
+      <form *ngIf="currentStep === 1" [formGroup]="secondFormGroup">
+        <h3>Étape 2 : Adresse et Contact</h3>
+        <div class="form-group">
+          <label>Ville</label>
+          <input
+            type="text"
+            formControlName="ville"
+            class="form-control"
+            placeholder="Entrez la ville"
+          />
+        </div>
+        <div class="form-group">
+          <label>Adresse e-mail</label>
+          <input
+            type="email"
+            formControlName="email"
+            class="form-control"
+            placeholder="Entrez l'adresse e-mail"
+          />
+        </div>
+        <button (click)="previousStep()">Retour</button>
+        <button (click)="nextStep()" [disabled]="secondFormGroup.invalid">
+          Suivant
+        </button>
+      </form>
+  
+      <form *ngIf="currentStep === 2" [formGroup]="thirdFormGroup">
+        <h3>Étape 3 : Informations Supplémentaires</h3>
+        <div class="form-group">
+          <label>Activité Principale</label>
+          <textarea
+            formControlName="activitePrincipale"
+            class="form-control"
+            placeholder="Entrez l'activité principale"
+          ></textarea>
+        </div>
+        <button (click)="previousStep()">Retour</button>
+        <button (click)="submitForm()">Terminer</button>
+      </form>
+    </div>
+  </div>
+  

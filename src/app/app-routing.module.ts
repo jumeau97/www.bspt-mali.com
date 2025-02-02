@@ -46,14 +46,20 @@ import { GalerieComponent } from './views/presse-et-media/actualites/galerie/gal
 import { SecteurPriveComponent } from './views/presse-et-media/actualites/secteur-prive/secteur-prive.component';
 import { GuideUtilisateurComponent } from './views/demande-et-adhesion/guide-utilisateur/guide-utilisateur.component';
 import { ActualiteDetailsComponent } from './views/presse-et-media/actualites/actualite-details/actualite-details.component';
+import { NotFoundComponent } from './views/not-found/not-found.component';
+import { TestComponent } from './views/test/test.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+
+  // { path: '', redirectTo: 'home', pathMatch: 'full' },
+
+
+  { path: '', component: HomeComponent},
 
   //offres
   { path: 'offer', component: OffresComponent },
 
-//  ====================================================Menu: Qui sommes nous=============================================================
+  //  ====================================================Menu: Qui sommes nous=============================================================
   // SubMenu: A-propos
   { path: 'a-propos-bstp', component: AProposBstpComponent },
   { path: 'historic', component: HistoriqueComponent },
@@ -76,24 +82,30 @@ const routes: Routes = [
   { path: 'publications', component: PublicationsComponent },
   { path: 'rapports', component: RapportsComponent },
 
-    //La TEAM BSTP
-    { path: 'la-team-bstp',component:LaTeamBstpComponent},
-    { path: 'la-team-bstp/team-detail',component:TeamDetailComponent},
-  
-    //FAQs
-    { path: 'faqs',component:FaqsComponent},
+  //La TEAM BSTP
+  { path: 'la-team-bstp', component: LaTeamBstpComponent },
+  { path: 'la-team-bstp/team-detail', component: TeamDetailComponent },
+
+  //FAQs
+  { path: 'faqs', component: FaqsComponent },
 
   // =======================================================Fin Menu Qui Sommes Nous===============================================================================================================
 
   //  =======================================================Menu: Programmes=================================================================================================================================
-  { path: 'programme-amelioration-continu', component: ProgrammeAmeliorationContinuComponent },
-  { path: 'programmme-labelisation', component: ProgrammeLabelisationComponent },
+  {
+    path: 'programme-amelioration-continu',
+    component: ProgrammeAmeliorationContinuComponent,
+  },
+  {
+    path: 'programmme-labelisation',
+    component: ProgrammeLabelisationComponent,
+  },
   { path: 'recensement-diagnostic', component: RecensementDiagnosticComponent },
-  
+
   // ==========================================================Fin Menu: Programmes==========================================================================================================================
 
   // ==========================================================Menus Demandes & Adhesion ==================================================================
-  // SubMenu Demandes 
+  // SubMenu Demandes
   { path: 'partenariat', component: PartenariatComponent },
   { path: 'co-traitance', component: CoTraitanceComponent },
   { path: 'sous-traitance', component: SousTraitanceComponent },
@@ -108,32 +120,46 @@ const routes: Routes = [
   //Menu Guide utilisateur
   { path: 'guide-utilisateur', component: GuideUtilisateurComponent },
   // ============================================================Fin Menus Demandes & adhesion===================================================================================================================
-  
 
   // ============================================================Menus Presse et Media ========================================================================================================================
   // Submenu Actualités
   { path: 'a-la-une', component: ALaUneComponent },
   { path: 'activites-en-cours', component: ActivitesEnCoursComponent },
   { path: 'activites-realises', component: ActivitesRealisesComponent },
-  { path: 'environnement-economique', component: EnvironnementEconomiqueComponent },
+  {
+    path: 'environnement-economique',
+    component: EnvironnementEconomiqueComponent,
+  },
   { path: 'galerie', component: GalerieComponent },
   { path: 'secteur-prive', component: SecteurPriveComponent },
 
   //==================================================================Actualites details==============================================================
   { path: 'actualite-details', component: ActualiteDetailsComponent },
-  
-  // SubMenu Evenements 
-  { path: 'ceremonie-de-recompense', component: CeremonieDeRecompenseComponent },
+
+  // SubMenu Evenements
+  {
+    path: 'ceremonie-de-recompense',
+    component: CeremonieDeRecompenseComponent,
+  },
   { path: 'conferences', component: ConferencesComponent },
-  { path: 'evenement-de-nos-partenaires', component: EvenementDeNosPartenairesComponent },
+  {
+    path: 'evenement-de-nos-partenaires',
+    component: EvenementDeNosPartenairesComponent,
+  },
   { path: 'salons-specialises', component: SalonsSpecialisesComponent },
   { path: 'seminaire-national', component: SeminaireNationalComponent },
   { path: 'webinaires', component: WebinairesComponent },
   // =============================================================Fin Menu Presse et Media===========================================================================================================
+
+  { path: 'test', component: TestComponent },
+
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash:true})],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
