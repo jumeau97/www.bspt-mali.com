@@ -18,9 +18,9 @@
   }
   
   .step.active {
-    background-color: #007bff;
+    background-color: #34789b;
     color: white;
-    border-color: #007bff;
+    border-color: #34789b;
   }
   
   .step.completed {
@@ -38,4 +38,37 @@
   button {
     margin: 10px 5px;
   }
+
+
+  .payment-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .payment-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .payment-option input {
+    display: none; /* Cache le bouton radio natif */
+  }
+  
+  .payment-option img {
+    width: auto;
+    height: auto;
+    border: 2px solid #34789b;
+    border-radius: 8px;
+    padding: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .payment-option input:checked + img {
+    border-color: red;
+    box-shadow: 0 0 8px #ff4e0880;
+  }
+  
   

@@ -48,6 +48,10 @@ import { GuideUtilisateurComponent } from './views/demande-et-adhesion/guide-uti
 import { ActualiteDetailsComponent } from './views/presse-et-media/actualites/actualite-details/actualite-details.component';
 import { NotFoundComponent } from './views/not-found/not-found.component';
 import { TestComponent } from './views/test/test.component';
+import { ContactUsComponent } from './views/contact-us/contact-us.component';
+import { SigninComponent } from './views/auth/signin/signin.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { DetailsComponent } from './views/offres/details/details.component';
 
 const routes: Routes = [
 
@@ -58,6 +62,7 @@ const routes: Routes = [
 
   //offres
   { path: 'offer', component: OffresComponent },
+  { path: 'offer-details/:id', component: DetailsComponent },
 
   //  ====================================================Menu: Qui sommes nous=============================================================
   // SubMenu: A-propos
@@ -151,6 +156,8 @@ const routes: Routes = [
   { path: 'webinaires', component: WebinairesComponent },
   // =============================================================Fin Menu Presse et Media===========================================================================================================
 
+  { path: 'contact-us', component: ContactUsComponent },
+  { path: 'signin', component: SigninComponent },
   { path: 'test', component: TestComponent },
 
   { path: '**', component: NotFoundComponent },
@@ -160,6 +167,6 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
   ],
-  exports: [RouterModule],
+  exports: [NgSelectModule, RouterModule],
 })
 export class AppRoutingModule {}

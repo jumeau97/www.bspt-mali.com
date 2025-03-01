@@ -9,33 +9,22 @@
                                     </div>                        
                                 </div> -->
     <!-- TITLE END-->
+    <form [formGroup]="searchForm" (ngSubmit)="searchOffer()">
     <div class="row">
-      <!-- <div class="col-md-3 col-sm-3">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control"  placeholder="First Name">
-                                        </div>
-                                    </div> -->
-      <div class="col-md-5 col-sm-5">
-        <div class="form-group">
-          <select class="form-control form-select">
-            <option disabled>Statut</option>
-            <option>Tout</option>
-            <option>En cours</option>
-            <option>Expiré</option>
-          </select>
-        </div>
+      <div class="col-md-5 col-sm-5 mb-1">
+
+        <ng-select placeholder="Choisir le statut" formControlName="offerStatus">
+          <ng-option    *ngFor="let status of offerStaus"
+          [value]="status.value">   {{ status.label }} </ng-option>
+        </ng-select>
       </div>
-      <div class="col-md-5 col-sm-5">
-        <div class="form-group">
-          <select class="form-control form-select">
-            <option disabled>Secteurs d'activités</option>
-            <option>Administration publique</option>
-            <option>Administration sportive</option>
-            <option>Agence de voyage</option>
-            <option>Agricoles</option>
-            <option>Agro-alimentaire</option>
-          </select>
-        </div>
+   
+
+      <div class="col-md-5 col-sm-5 mb-1">
+        <ng-select  placeholder="Choisir l'activité" formControlName="activityId">
+          <ng-option    *ngFor="let activity of activities"
+          [value]="activity.id">   {{ activity.name }} </ng-option>
+        </ng-select>
       </div>
       <div class="col-md-2 col-sm-2">
         <div class="form-group">
@@ -45,39 +34,39 @@
         </div>
       </div>
     </div>
+  </form>
   </div>
   <div class="container">
     <div class="section-content">
       <div class="row">
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-6 col-md-6" *ngFor="let o of offers">
           <div
             class="wt-box block-md clearfix bg-white m-b30 radius-md overflow-hide"
           >
-            <div class="wt-media">
+            <!-- <div class="wt-media">
               <img src="assets/images/gallery/cases/pic1.jpg" alt="" />
-            </div>
+            </div> -->
             <div class="wt-info text-left p-a20 overflow-hide">
-              <h4 class="text-uppercase">IT Consulting</h4>
+              <h4 class="text-uppercase">{{o.name}}</h4>
               <span class="badge rounded-pill text-bg-primary">En cours</span>
-         
+
+              <div>
+               {{o.name | textTruncate: 100}}
                 <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                laoreet odio id lectus tristique luctus. Morbi id sodales orci
-                ins. Nunc et nunc sodales, convallis elit.
-                <div >
-                    <span class="badge  text-bg-secondary mx-1">Fournitures</span>
-                    <span class="badge  text-bg-secondary m-1">Fournitures diverses</span>
+                  <span class="badge text-bg-secondary mx-1">{{o?.activity?.name}}</span>
+                  <!-- <span class="badge text-bg-secondary m-1"
+                    >Fournitures diverses</span
+                  > -->
                 </div>
-                </div>
-          
-           
-              <a href="javascript:;" class="site-text-primary font-weight-600 "
+              </div>
+
+              <a [routerLink]="['/offer-details', o.id]" class="site-text-primary font-weight-600"
                 >VOIR DETAIL</a
               >
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6">
+        <!-- <div class="col-lg-6 col-md-6">
           <div
             class="wt-box block-md clearfix bg-white m-b30 radius-md overflow-hide"
           >
@@ -97,9 +86,9 @@
               >
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="col-lg-6 col-md-6">
+        <!-- <div class="col-lg-6 col-md-6">
           <div
             class="wt-box block-md clearfix bg-white m-b30 radius-md overflow-hide"
           >
@@ -141,22 +130,22 @@
               >
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
-              <!-- PAGINATION START -->
-              <div class="pagination-bx clearfix align-content-center">
-                <ul class="custom-pagination pagination-1">
-                  <li><a href="#">&laquo;</a></li>
-                  <li class="active"><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">&raquo;</a></li>
-                </ul>
-              </div>
-              <!-- PAGINATION END -->
-      
+      <!-- PAGINATION START -->
+      <div class="pagination-bx clearfix align-content-center">
+     
+        <ul class="custom-pagination pagination-1">
+          <li [ngClass]="{'disabled': currentPage === 1}"  (click)="prevPage()"><a >&laquo;</a></li>
+          <!-- <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li> -->
+          <span class="m-2"
+          >Page {{ currentPage }} sur {{ totalPages }}</span
+        >
+          <li [ngClass]="{'disabled': currentPage === totalPages}"  (click)="nextPage()"><a >&raquo;</a></li>
+        </ul>
+      </div>
+      <!-- PAGINATION END -->
     </div>
   </div>
 </div>

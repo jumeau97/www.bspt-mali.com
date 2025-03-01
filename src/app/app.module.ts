@@ -135,6 +135,11 @@ import { HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { StepsModule } from 'primeng/steps';
 import { TestComponent } from './views/test/test.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ContactUsComponent } from './views/contact-us/contact-us.component';
+import { SigninComponent } from './views/auth/signin/signin.component';
+import { DetailsComponent } from './views/offres/details/details.component';
+import { SafeHTMLPipe } from './views/offres/details/safe-html.pipe';
+import { TextTruncatePipe } from './views/offres/details/text-truncate.pipe';
 // import { TabMenuModule } from 'primeng/tabmenu';
 // import { TableModule } from 'primeng/table';
 // import { TabViewModule } from 'primeng/tabview';
@@ -212,6 +217,12 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     NotFoundComponent,
     TestComponent,
+    ContactUsComponent,
+    SigninComponent,
+    DetailsComponent,
+
+    SafeHTMLPipe,
+    TextTruncatePipe
     
   ],
   imports: [

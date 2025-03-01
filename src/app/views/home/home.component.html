@@ -2,7 +2,7 @@
   <div class="tp-banner-container">
     <!-- <div class="tp-banner"> -->
 
-    <ngb-carousel>
+    <!-- <ngb-carousel>
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
           <img [src]="images[0]" alt="Random first slide" />
@@ -55,9 +55,58 @@
           </div>
         </div>
       </ng-template>
-    </ngb-carousel>
+    </ngb-carousel> -->
     <!-- </div> -->
     <!-- SLIDER END -->
+
+    <!-- INNER PAGE BANNER -->
+    <div
+      class="wt-bnr-inr overlay-wraper"
+      style="background-image: url(assets/images/main-slider/bg_bstp_2.jpg)"
+    >
+      <div class="overlay-main bg-black opacity-05"></div>
+      <div class="container">
+        <div class="wt-bnr-inr-entry">
+          <h1 class="text-white">TROUVER TOUS LES APPELS D'OFFRES</h1>
+          <!-- BREADCRUMB ROW -->
+          <ul class="wt-breadcrumb breadcrumb-style-2">
+            <!-- <li>
+              <a href="javascript:void(0);"
+                ><i class="fa fa-home"></i> Accueil</a
+              >
+            </li> -->
+            <li class="">Trouvez ici tous les appels d'offres </li>
+          </ul>
+          <!-- BREADCRUMB  ROW END -->
+               <!-- SIDE BAR START -->
+          <div class="col-lg-6 col-md-12 rightSidebar">
+            <!-- 13. SEARCH -->
+            <div class="widget bg-black-light p-a20 radius-md">
+              <div class="search-bx">
+                <form role="search" method="post">
+                  <div class="input-group">
+                    <input
+                      name="news-letter"
+                      type="text"
+                      class="form-control bg-gray"
+                      placeholder="Taper un mot clé"
+                    />
+                    <span class="input-group-btn">
+                      <a routerLink="offer"><button type="submit" class="btn btn-primary">
+                        Rechercher
+                      </button></a>
+                    </span>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- SIDE BAR END -->
+        </div>
+      </div>
+    </div>
+    <!-- INNER PAGE BANNER END -->
+
     <!-- SECTION CONTENT -->
     <div class="section-full site-bg-primary p-t80 p-b50">
       <div class="container">
@@ -384,11 +433,11 @@
     </div>
     <!-- HOW IT WORK  SECTION END -->
     <!-- FEATURED CASES SECTION START -->
-    <div class="section-full bg-light p-t80 p-b50">
+    <div class="section-full bg-primary p-t80 p-b50">
       <div class="container">
         <!-- TITLE START-->
         <div class="section-head text-center">
-          <h2 class="text-uppercase">MISE EN AVANT</h2>
+          <h2 class="text-uppercase text-white">MISE EN AVANT</h2>
           <div class="wt-separator-outer">
             <div class="wt-separator site-bg-primary"></div>
           </div>

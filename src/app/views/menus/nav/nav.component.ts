@@ -49,171 +49,196 @@ export class NavComponent {
       open: false,
     },
     {
-      title: 'QUI SOMMES NOUS',
-      iconClass: 'fa fa-snowflake',
-      link: 'javascript:;',
+      title: 'Qui sommes nous ?',
+      iconClass: 'fas fa-list',
+      link: '/a-propos-bstp',
       open: false,
-      subMenu: [
-        {
-          title: 'A propos',
-          link: 'javascript:;',
-          open: false,
-          subMenu: [
-            { title: 'A propos de BSTP-MALI', link: '/a-propos-bstp' },
-            { title: 'Historique', link: '/historic' },
-            { title: 'Ancien Directeur', link: '/ancien-directeur' },
-            { title: 'Mot du President', link: '/mot-du-president' },
-            { title: 'Mot du Directeur', link: '/mot-du-directeur' },
-            { title: 'Étude de 2009', link: '/etude-2009' },
-          ],
-        },
-        {
-          title: 'Outils',
-          link: 'javascript:;',
-          open: false,
-          subMenu: [
-            { title: 'Base de donnée', link: 'base-de-donnee' },
-            {
-              title: 'Documentation technique',
-              link: 'documentation-technique',
-            },
-            {
-              title: 'Cartographie des PME/PMI',
-              link: 'cartographie-des-pme-pmi',
-            },
-            {
-              title: 'Outils de developpement Industriel',
-              link: 'outils-de-developpement-industriel',
-            },
-            { title: 'Applications mobiles', link: 'applications-mobiles' },
-          ],
-        },
-        {
-          title: 'Documentation',
-          link: 'javascript:;',
-          open: false,
-          subMenu: [
-            {
-              title: 'Lois / Ordonnances et Décrets',
-              link: 'lois-ordonnances-et-decret',
-            },
-            { title: 'Codes', link: 'codes' },
-            { title: 'Décisions', link: 'decisions' },
-            { title: 'Rapports', link: 'rapports' },
-            {
-              title: 'Politiques sectorielles',
-              link: 'politiques-sectorielles',
-            },
-            { title: 'Publications', link: 'publications' },
-          ],
-        },
-        { title: 'La BSTP TEAM', link: '/la-team-bstp', open: false },
-        { title: 'FAQs', link: '/faqs', open: false },
-      ],
     },
     {
-      title: 'PROGRAMMES',
+      title: 'Adhesion',
+      iconClass: 'fas fa-list',
+      link: '/devenez-membre',
+      open: false,
+    },
+    // {
+    //   title: 'QUI SOMMES NOUS',
+    //   iconClass: 'fa fa-snowflake',
+    //   link: 'javascript:;',
+    //   open: false,
+    //   subMenu: [
+    //     {
+    //       title: 'A propos',
+    //       link: 'javascript:;',
+    //       open: false,
+    //       subMenu: [
+    //         { title: 'A propos de BSTP-MALI', link: '/a-propos-bstp' },
+    //         { title: 'Historique', link: '/historic' },
+    //         { title: 'Ancien Directeur', link: '/ancien-directeur' },
+    //         { title: 'Mot du President', link: '/mot-du-president' },
+    //         { title: 'Mot du Directeur', link: '/mot-du-directeur' },
+    //         { title: 'Étude de 2009', link: '/etude-2009' },
+    //       ],
+    //     },
+    //     {
+    //       title: 'Outils',
+    //       link: 'javascript:;',
+    //       open: false,
+    //       subMenu: [
+    //         { title: 'Base de donnée', link: 'base-de-donnee' },
+    //         {
+    //           title: 'Documentation technique',
+    //           link: 'documentation-technique',
+    //         },
+    //         {
+    //           title: 'Cartographie des PME/PMI',
+    //           link: 'cartographie-des-pme-pmi',
+    //         },
+    //         {
+    //           title: 'Outils de developpement Industriel',
+    //           link: 'outils-de-developpement-industriel',
+    //         },
+    //         { title: 'Applications mobiles', link: 'applications-mobiles' },
+    //       ],
+    //     },
+    //     {
+    //       title: 'Documentation',
+    //       link: 'javascript:;',
+    //       open: false,
+    //       subMenu: [
+    //         {
+    //           title: 'Lois / Ordonnances et Décrets',
+    //           link: 'lois-ordonnances-et-decret',
+    //         },
+    //         { title: 'Codes', link: 'codes' },
+    //         { title: 'Décisions', link: 'decisions' },
+    //         { title: 'Rapports', link: 'rapports' },
+    //         {
+    //           title: 'Politiques sectorielles',
+    //           link: 'politiques-sectorielles',
+    //         },
+    //         { title: 'Publications', link: 'publications' },
+    //       ],
+    //     },
+    //     { title: 'La BSTP TEAM', link: '/la-team-bstp', open: false },
+    //     { title: 'FAQs', link: '/faqs', open: false },
+    //   ],
+    // },
+    // {
+    //   title: 'PROGRAMMES',
+    //   link: 'javascript:;',
+    //   open: false,
+    //   subMenu: [
+    //     {
+    //       title: "Programme d'amélioration continu",
+    //       link: '/programme-amelioration-continu',
+    //     },
+    //     {
+    //       title: 'Programme de Labellisation',
+    //       link: '/programmme-labelisation',
+    //     },
+    //     { title: 'Recensement diagnostic des PME/PMI', link: 'footer-light.html' },
+    //     { title: 'Financement de la sous traitance et du contenu local', link: 'footer-light.html' },
+    //     { title: 'Charte de la Sous-traitance', link: 'footer-light.html' },
+    //   ],
+    // },
+
+      {
+      title: 'Demandes',
       link: 'javascript:;',
       open: false,
       subMenu: [
-        {
-          title: "Programme d'amélioration continu",
-          link: '/programme-amelioration-continu',
-        },
-        {
-          title: 'Programme de Labellisation',
-          link: '/programmme-labelisation',
-        },
-        { title: 'Recensement diagnostic des PME/PMI', link: 'footer-light.html' },
-        { title: 'Financement de la sous traitance et du contenu local', link: 'footer-light.html' },
-        { title: 'Charte de la Sous-traitance', link: 'footer-light.html' },
+        { title: 'Sous-traitance', link: '/sous-traitance' },
+        { title: 'Co-traitance', link: '/co-traitance' },
+        { title: 'Partenariat', link: '/partenariat' },
       ],
     },
-    {
-      title: 'DEMANDES & ADHESION',
-      iconClass: 'fa fa-chevron-down',
-      link: 'javascript:;',
-      open: false,
-      subMenu: [
-        {
-          title: 'Demandes',
-          link: 'javascript:;',
-          open: false,
-          subMenu: [
-            { title: 'Partenariat', link: '/partenariat' },
-            { title: 'Sous-traitance', link: '/sous-traitance' },
-            { title: 'Co-traitance', link: '/co-traitance' },
-          ],
-        },
-        {
-          title: 'Adhésion',
-          link: 'javascript:;',
-          open: false,
-          subMenu: [
-            { title: 'Pourquoi adhérer', link: '/pourquoi-adherer' },
-            { title: 'Devenir membre', link: '/devenez-membre' },
-            { title: 'Déposer vos CV', link: '/deposer-vos-cv' },
-            {
-              title: "Poster une offre d'emploi",
-              link: '/poster-une-offre-emploi',
-            },
-          ],
-        },
-        { title: 'Guide utilisateur', link: '/guide-utilisateur', open: false },
-      ],
-    },
-    {
-      title: 'PRESSE & MEDIA',
-      iconClass: 'fa fa-chevron-down',
-      link: 'javascript:;',
-      open: false,
-      subMenu: [
-        {
-          title: 'Actualités',
-          link: 'javascript:;',
-          open: false,
-          subMenu: [
-            { title: 'A la une', link: '/a-la-une' },
-            { title: 'Activités réalisées', link: '/activites-realises' },
-            { title: 'Activités en cours', link: '/activites-en-cours' },
-            {
-              title: 'Environnement économique',
-              link: 'environnement-economique',
-            },
-            { title: 'Secteur privé', link: '/secteur-prive' },
-            { title: 'Galerie', link: '/galerie' },
-          ],
-        },
-        {
-          title: 'Évènement',
-          link: 'javascript:;',
-          open: false,
-          subMenu: [
-            { title: 'Séminaire National', link: '/seminaire-national' },
-            { title: 'Salons Spécialisés', link: '/salons-specialises' },
-            {
-              title: 'Cérémonie de récompense',
-              link: 'ceremonie-de-recompense',
-            },
-            { title: 'Conférences', link: '/conferences' },
-            { title: 'Webinaires', link: '/webinaires' },
-            {
-              title: 'Événements de nos partenaires',
-              link: 'evenements-de-nos-partenaires',
-            },
-            {
-              title: 'Salon National sur l’industrialisation ',
-              link: 'evenements-de-nos-partenaires',
-            },
-          ],
-        },
-      ],
-    },
+
+
+    // {
+    //   title: 'DEMANDES & ADHESION',
+    //   iconClass: 'fa fa-chevron-down',
+    //   link: 'javascript:;',
+    //   open: false,
+    //   subMenu: [
+    //     {
+    //       title: 'Demandes',
+    //       link: 'javascript:;',
+    //       open: false,
+    //       subMenu: [
+    //         { title: 'Partenariat', link: '/partenariat' },
+    //         { title: 'Sous-traitance', link: '/sous-traitance' },
+    //         { title: 'Co-traitance', link: '/co-traitance' },
+    //       ],
+    //     },
+    //     {
+    //       title: 'Adhésion',
+    //       link: 'javascript:;',
+    //       open: false,
+    //       subMenu: [
+    //         { title: 'Pourquoi adhérer', link: '/pourquoi-adherer' },
+    //         { title: 'Devenir membre', link: '/devenez-membre' },
+    //         { title: 'Déposer vos CV', link: '/deposer-vos-cv' },
+    //         {
+    //           title: "Poster une offre d'emploi",
+    //           link: '/poster-une-offre-emploi',
+    //         },
+    //       ],
+    //     },
+    //     { title: 'Guide utilisateur', link: '/guide-utilisateur', open: false },
+    //   ],
+    // },
+    // {
+    //   title: 'PRESSE & MEDIA',
+    //   iconClass: 'fa fa-chevron-down',
+    //   link: 'javascript:;',
+    //   open: false,
+    //   subMenu: [
+    //     {
+    //       title: 'Actualités',
+    //       link: 'javascript:;',
+    //       open: false,
+    //       subMenu: [
+    //         { title: 'A la une', link: '/a-la-une' },
+    //         { title: 'Activités réalisées', link: '/activites-realises' },
+    //         { title: 'Activités en cours', link: '/activites-en-cours' },
+    //         {
+    //           title: 'Environnement économique',
+    //           link: 'environnement-economique',
+    //         },
+    //         { title: 'Secteur privé', link: '/secteur-prive' },
+    //         { title: 'Galerie', link: '/galerie' },
+    //       ],
+    //     },
+    //     {
+    //       title: 'Évènement',
+    //       link: 'javascript:;',
+    //       open: false,
+    //       subMenu: [
+    //         { title: 'Séminaire National', link: '/seminaire-national' },
+    //         { title: 'Salons Spécialisés', link: '/salons-specialises' },
+    //         {
+    //           title: 'Cérémonie de récompense',
+    //           link: 'ceremonie-de-recompense',
+    //         },
+    //         { title: 'Conférences', link: '/conferences' },
+    //         { title: 'Webinaires', link: '/webinaires' },
+    //         {
+    //           title: 'Événements de nos partenaires',
+    //           link: 'evenements-de-nos-partenaires',
+    //         },
+    //         {
+    //           title: 'Salon National sur l’industrialisation ',
+    //           link: 'evenements-de-nos-partenaires',
+    //         },
+    //       ],
+    //     },
+    //   ],
+    // },
     {
       title: 'CONTACTEZ-NOUS',
       iconClass: '',
       open: false,
-      link: 'javascript:;',
+      link: '/contact-us',
     },
     {
       title: 'MAPS',
