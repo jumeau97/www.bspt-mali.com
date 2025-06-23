@@ -45,7 +45,7 @@
             </p>
           </div>
 
-          <div >
+          <div>
             <form>
               <!-- <div class="row">
                 <div class="col-md-8 col-sm-6">
@@ -167,7 +167,6 @@
                 ></textarea>
               </div> -->
 
-      
               <!-- <button
                 type="submit"
                 value="submit"
@@ -182,9 +181,8 @@
               >
                 Annuler
               </button> -->
-
             </form>
-            <div class="custom-stepper">
+            <div class="custom-stepper" #top id="top" *ngIf="!paymentSuccess">
               <!-- Étapes -->
               <div class="stepper-header">
                 <div
@@ -197,7 +195,7 @@
                   <span>{{ step.label }}</span>
                 </div>
               </div>
-            
+
               <!-- Formulaire actif -->
               <div class="stepper-body">
                 <form *ngIf="currentStep === 0" [formGroup]="firstFormGroup">
@@ -311,7 +309,7 @@
                       </div>
                     </div>
                   </div>
-    
+
                   <div class="form-group">
                     <label>Activité Principale</label>
                     <textarea
@@ -335,20 +333,26 @@
                     >
                       <ng-template pTemplate="toolbar">
                         <div class="py-3">
-                          Les documents doivent obligatoirement être en
-                          format PDF
+                          Les documents doivent obligatoirement être en format
+                          PDF
                         </div>
                       </ng-template>
                       <ng-template pTemplate="content">
-                        <div>Glisser-Déposer ou Sélectionner vos documents...</div>
+                        <div>
+                          Glisser-Déposer ou Sélectionner vos documents...
+                        </div>
                       </ng-template>
                     </p-fileUpload>
                   </div>
-                  <button  class="site-button site-bg-primary" (click)="nextStep()" [disabled]="firstFormGroup.invalid">
+                  <button
+                    class="site-button site-bg-primary"
+                    (click)="nextStep()"
+                    [disabled]="firstFormGroup.invalid"
+                  >
                     Suivant
                   </button>
                 </form>
-            
+
                 <form *ngIf="currentStep === 1" [formGroup]="secondFormGroup">
                   <h3>Étape 2 : Choisissez le type de paiement</h3>
                   <div class="form-group">
@@ -372,52 +376,289 @@
                       <label for="physique">Paiement Physique</label>
                     </div>
                   </div>
-                  <button class="site-button site-button-secondry m-3"  (click)="previousStep()">Précedent</button>
-                  <button class="site-button site-button-primary"  (click)="nextStep()" [disabled]="secondFormGroup.invalid">
+                  <button
+                    class="site-button site-button-secondry m-3"
+                    (click)="previousStep()"
+                  >
+                    Précedent
+                  </button>
+                  <button
+                    class="site-button site-button-primary"
+                    (click)="nextStep()"
+                    [disabled]="secondFormGroup.invalid"
+                  >
                     Suivant
                   </button>
                 </form>
-            
+
                 <form *ngIf="currentStep === 2" [formGroup]="thirdFormGroup">
                   <h3>Étape 3 : Choisissez un moyen de paiement</h3>
-                  <div class="form-group" *ngIf="paymentType === 'electronic'">
+                  <!-- <div class="form-group" *ngIf="paymentType === 'electronic'">
                     <label>Moyen de paiement électronique</label>
                     <div class="payment-options">
-                      <label class="payment-option">
-                        <input type="radio" formControlName="paymentMethod" value="SAMA Money" />
-                        <img src="assets/images/payment_method/sama_money.jpg" alt="SAMA Money" class="payment-logo" />
+                      <label
+                        class="payment-option"
+                        *ngFor="let method of electronicMethods"
+                      >
+                        <input
+                          type="radio"
+                          formControlName="paymentMethod"
+                          [value]="method.value"
+                          name="electronicPayment"
+                          (change)="onPaymentMethodSelected(method.value)"
+                        />
+                        <img
+                          [src]="method.image"
+                          [alt]="method.label"
+                          class="payment-logo"
+                        />
+                        <span>{{ method.label }}</span>
                       </label>
-                  
                       <label class="payment-option">
-                        <input type="radio" formControlName="paymentMethod" value="Orange Money" />
-                        <img src="assets/images/payment_method/orange_money.jpg" alt="Orange Money" class="payment-logo" />
+                        <input
+                          type="radio"
+                          formControlName="paymentMethod"
+                          value="SAMA Money"
+                        />
+                        <img
+                          src="assets/images/payment_method/sama_money.jpg"
+                          alt="SAMA Money"
+                          class="payment-logo"
+                        />
                       </label>
-                  
+                      
                       <label class="payment-option">
-                        <input type="radio" formControlName="paymentMethod" value="Moov Money" />
-                        <img src="assets/images/payment_method/moov.jpg" alt="Moov Money" class="payment-logo" />
+                        <input
+                          type="radio"
+                          formControlName="paymentMethod"
+                          value="Orange Money"
+                        />
+                        <img
+                          src="assets/images/payment_method/orange_money.jpg"
+                          alt="Orange Money"
+                          class="payment-logo"
+                        />
                       </label>
-                  
+
                       <label class="payment-option">
-                        <input type="radio" formControlName="paymentMethod" value="Carte Visa" />
-                        <img src="assets/images/payment_method/mastercard.jpg" alt="Carte Visa" class="payment-logo" />
+                        <input
+                          type="radio"
+                          formControlName="paymentMethod"
+                          value="Moov Money"
+                        />
+                        <img
+                          src="assets/images/payment_method/moov.jpg"
+                          alt="Moov Money"
+                          class="payment-logo"
+                        />
                       </label>
+
+                      <label class="payment-option">
+                        <input
+                          type="radio"
+                          formControlName="paymentMethod"
+                          value="Carte Visa"
+                        />
+                        <img
+                          src="assets/images/payment_method/mastercard.jpg"
+                          alt="Carte Visa"
+                          class="payment-logo"
+                        />
+                      </label>
+                      <div *ngIf="selectedMethod">
+                        <h4>Informations pour {{ selectedMethod }}</h4>
+                        <div class="form-group">
+                          <label for="phone">Numéro de téléphone</label>
+                          <input
+                            id="phone"
+                            type="tel"
+                            class="form-control"
+                            formControlName="paymentPhone"
+                            placeholder="Ex: 07 12 34 56 78"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+
+                  <div class="form-group" *ngIf="paymentType === 'electronic'">
+                    <label>Moyen de paiement électronique</label>
+
+                    <div class="row d-flex justify-content-center">
+                      <!-- <div class="col-md-6"> -->
+                      <div
+                        class="col-sm-12 col-md-3 justify-content-center d-flex payment-options"
+                      >
+                        <ng-container *ngIf="!selectedMethod">
+                          <!-- Affiche toutes les options si rien n’est sélectionné -->
+                          <label
+                            class="payment-option"
+                            *ngFor="let method of electronicMethods"
+                            (click)="onPaymentMethodSelected(method.value)"
+                          >
+                            <img
+                              [src]="method.image"
+                              [alt]="method.label"
+                              class="payment-logo"
+                            />
+                            <span class="font-12">{{ method.label }}</span>
+                          </label>
+                        </ng-container>
+
+                        <ng-container *ngIf="selectedMethod">
+                          <!-- Affiche uniquement la méthode sélectionnée -->
+                          <label class="payment-option">
+                            <img
+                              [src]="getSelectedMethod()?.image"
+                              [alt]="selectedMethod"
+                              class="payment-logo"
+                            />
+                            <span>{{ selectedMethod }}</span>
+                            <button
+                              type="button"
+                              (click)="resetSelection()"
+                              class="btn btn-sm btn-link"
+                            >
+                              Changer
+                            </button>
+                          </label>
+                        </ng-container>
+                      </div>
+                      <!-- </div> -->
+
+                      <!-- visa card  -->
+
+                      <div
+                        class="col-md-6"
+                        *ngIf="
+                          selectedMethod && selectedMethod === 'Carte Visa'
+                        "
+                      >
+                        <h4>Informations de la carte</h4>
+
+                        <div class="form-group">
+                          <label>Votre nom complet</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            formControlName="cardNumber"
+                            placeholder="1234 5678 9012 3456"
+                          />
+                        </div>
+                      </div>
+
+                      <!-- Formulaire pour le moyen sélectionné -->
+                      <!-- <div class="col-md-6"> -->
+                      <div
+                        class="col-md-6"
+                        *ngIf="
+                          selectedMethod &&
+                          selectedMethod != 'Carte Visa' &&
+                          !initPayStatus
+                        "
+                      >
+                        <h4>Informations pour {{ selectedMethod }}</h4>
+                        <!-- <div class="row"> -->
+                        <!-- <div class="col-md-6"> -->
+                        <div class="form-group">
+                          <label for="phone">Numéro de téléphone</label>
+                          <input
+                            id="phone"
+                            type="tel"
+                            class="form-control"
+                            formControlName="paymentPhone"
+                            placeholder="Ex: 07 12 34 56 78"
+                          />
+                        </div>
+                        <!-- </div> -->
+                        <!-- </div> -->
+                      </div>
+
+                      <div
+                        class="col-md-8 d-flex justify-content-center align-items-center bg-body-secondary"
+                        *ngIf="initPayStatus"
+                      >
+                        <div class="spinner-border text-primary" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </div>
+                      </div>
+
+                      <!-- <div
+                        class="col-md-8 d-flex justify-content-center align-items-center"
+                        *ngIf="initPayMsg"
+                      >
+                        <p-messages
+                          [(value)]="messages!"
+                          [enableService]="false"
+                          [closable]="false"
+                        />
+                      </div> -->
+
+                      <button
+                        *ngIf="initPayMsg"
+                        class="border-0 site-button site-button-primary"
+                        type="button"
+                        disabled
+                      >
+                        <span
+                          class="spinner-grow spinner-grow-sm"
+                          aria-hidden="true"
+                        ></span>
+                        <span role="status">{{ initPayMsg }}...</span>
+                      </button>
+
+                      <!-- </div> -->
                     </div>
                   </div>
-            
+
                   <div class="form-group" *ngIf="paymentType === 'physique'">
                     <label>Mode de paiement physique</label>
-                    <select formControlName="paymentMethod" class="form-control">
+                    <select
+                      formControlName="paymentMethod"
+                      class="form-control"
+                    >
                       <option value="especes">Espèces</option>
                       <option value="cheque">Chèque</option>
                     </select>
                   </div>
-                  <button class="site-button site-button-secondry m-3"   (click)="previousStep()">Retour</button>
-                  <button class="site-button site-button-primary m-3" (click)="submitForm()">Soumettre les dossiers</button>
+                  <button
+                    class="site-button site-button-secondry m-3"
+                    (click)="previousStep()"
+                  >
+                    Retour
+                  </button>
+                  <button
+                    *ngIf="!initPayMsg"
+                    class="site-button site-button-primary m-3"
+                    (click)="submitForm()"
+                  >
+                    Soumettre les dossiers
+                  </button>
                 </form>
               </div>
             </div>
-            
+
+            <div class="row justify-content-center">
+              <div
+                class="col-md-6 alert alert-success text-center"
+                role="alert"
+                *ngIf="paymentSuccess"
+              >
+                <h4 class="alert-heading mb-3">
+                  <img
+                    src="assets/success.gif"
+                    alt="Succès"
+                    class="img-fluid"
+                    style="max-height: 100px"
+                  />
+                </h4>
+                <p>
+                  Votre paiement a été effectué avec succès. Notre équipe
+                  analysera votre dossier et vous recontactera dans les plus
+                  brefs délais.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -107,7 +107,7 @@ import { HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 // import { MenuModule } from 'primeng/menu';
 // import { MenubarModule } from 'primeng/menubar';
 // import { MessageModule } from 'primeng/message';
-// import { MessagesModule } from 'primeng/messages';
+import { MessagesModule } from 'primeng/messages';
 // import { MultiSelectModule } from 'primeng/multiselect';
 // import { OrderListModule } from 'primeng/orderlist';
 // import { OrganizationChartModule } from 'primeng/organizationchart';
@@ -284,7 +284,7 @@ import { TextTruncatePipe } from './views/offres/details/text-truncate.pipe';
     //  MenuModule,
     //  MenubarModule,
     //  MessageModule,
-    //  MessagesModule,
+     MessagesModule,
     //  MultiSelectModule,
     //  OrganizationChartModule,
     //  OrderListModule,

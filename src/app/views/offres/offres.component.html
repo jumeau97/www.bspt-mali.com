@@ -10,31 +10,40 @@
                                 </div> -->
     <!-- TITLE END-->
     <form [formGroup]="searchForm" (ngSubmit)="searchOffer()">
-    <div class="row">
-      <div class="col-md-5 col-sm-5 mb-1">
+      <div class="row">
+        <div class="col-md-5 col-sm-5 mb-1">
+          <ng-select
+            placeholder="Choisir le statut"
+            formControlName="offerStatus"
+          >
+            <ng-option *ngFor="let status of offerStaus" [value]="status.value">
+              {{ status.label }}
+            </ng-option>
+          </ng-select>
+        </div>
 
-        <ng-select placeholder="Choisir le statut" formControlName="offerStatus">
-          <ng-option    *ngFor="let status of offerStaus"
-          [value]="status.value">   {{ status.label }} </ng-option>
-        </ng-select>
-      </div>
-   
-
-      <div class="col-md-5 col-sm-5 mb-1">
-        <ng-select  placeholder="Choisir l'activité" formControlName="activityId">
-          <ng-option    *ngFor="let activity of activities"
-          [value]="activity.id">   {{ activity.name }} </ng-option>
-        </ng-select>
-      </div>
-      <div class="col-md-2 col-sm-2">
-        <div class="form-group">
-          <button type="submit" value="submit" class="site-button btn-block">
-            Rechercher
-          </button>
+        <div class="col-md-5 col-sm-5 mb-1">
+          <ng-select
+            placeholder="Choisir l'activité"
+            formControlName="activityId"
+          >
+            <ng-option
+              *ngFor="let activity of activities"
+              [value]="activity.id"
+            >
+              {{ activity.name }}
+            </ng-option>
+          </ng-select>
+        </div>
+        <div class="col-md-2 col-sm-2">
+          <div class="form-group">
+            <button type="submit" value="submit" class="site-button btn-block">
+              Rechercher
+            </button>
+          </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
   </div>
   <div class="container">
     <div class="section-content">
@@ -47,20 +56,24 @@
               <img src="assets/images/gallery/cases/pic1.jpg" alt="" />
             </div> -->
             <div class="wt-info text-left p-a20 overflow-hide">
-              <h4 class="text-uppercase">{{o.name}}</h4>
+              <h4 class="text-uppercase">{{ o.name }}</h4>
               <span class="badge rounded-pill text-bg-primary">En cours</span>
 
               <div>
-               {{o.name | textTruncate: 100}}
+                {{ o.name | textTruncate : 100 }}
                 <div>
-                  <span class="badge text-bg-secondary mx-1">{{o?.activity?.name}}</span>
+                  <span class="badge text-bg-secondary mx-1">{{
+                    o?.activity?.name
+                  }}</span>
                   <!-- <span class="badge text-bg-secondary m-1"
                     >Fournitures diverses</span
                   > -->
                 </div>
               </div>
 
-              <a [routerLink]="['/offer-details', o.id]" class="site-text-primary font-weight-600"
+              <a
+                [routerLink]="['/offer-details', o.id]"
+                class="site-text-primary font-weight-600"
                 >VOIR DETAIL</a
               >
             </div>
@@ -134,15 +147,19 @@
       </div>
       <!-- PAGINATION START -->
       <div class="pagination-bx clearfix align-content-center">
-     
         <ul class="custom-pagination pagination-1">
-          <li [ngClass]="{'disabled': currentPage === 1}"  (click)="prevPage()"><a >&laquo;</a></li>
+          <li [ngClass]="{ disabled: currentPage === 1 }" (click)="prevPage()">
+            <a>&laquo;</a>
+          </li>
           <!-- <li class="active"><a href="#">1</a></li>
           <li><a href="#">2</a></li> -->
-          <span class="m-2"
-          >Page {{ currentPage }} sur {{ totalPages }}</span
-        >
-          <li [ngClass]="{'disabled': currentPage === totalPages}"  (click)="nextPage()"><a >&raquo;</a></li>
+          <span class="m-2">Page {{ currentPage }} sur {{ totalPages }}</span>
+          <li
+            [ngClass]="{ disabled: currentPage === totalPages }"
+            (click)="nextPage()"
+          >
+            <a>&raquo;</a>
+          </li>
         </ul>
       </div>
       <!-- PAGINATION END -->
