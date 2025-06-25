@@ -144,7 +144,7 @@ export class NavComponent {
 
       {
       title: 'Demandes',
-      link: 'javascript:;',
+      link: 'javascript:void(0)',
       open: false,
       subMenu: [
         { title: 'Sous-traitance', link: '/sous-traitance' },

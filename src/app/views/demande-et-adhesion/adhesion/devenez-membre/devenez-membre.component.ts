@@ -1,6 +1,13 @@
 import { ViewportScroller } from '@angular/common';
-import { ChangeDetectorRef, Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  HostListener,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Message } from 'primeng/api';
 import { GeneralService } from 'src/app/services/general/general.service';
 import { myConstants } from 'src/app/views/utils';
@@ -34,6 +41,11 @@ export class DevenezMembreComponent {
       value: 'Moov Money',
       image: 'assets/images/payment_method/moov.jpg',
     },
+     {
+      label: 'Sama Money',
+      value: 'Sama Money',
+      image: 'assets/images/payment_method/sama_money.jpg',
+    },
     {
       label: 'Carte Visa',
       value: 'Carte Visa',
@@ -46,13 +58,14 @@ export class DevenezMembreComponent {
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
   thirdFormGroup!: FormGroup;
-  paymentSuccess: boolean=false;
+  paymentSuccess: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private viewportScroller: ViewportScroller,
     private generalService: GeneralService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {
     this.firstFormGroup = this.fb.group({
       raisonSociale: ['', Validators.required],
@@ -105,53 +118,140 @@ export class DevenezMembreComponent {
   submitForm() {
     const generateRef = () => {
       const now = new Date();
-      return `bstp_${now.getFullYear()}${
+      return `BSTP.${now.getFullYear()}${
         now.getMonth() + 1
-      }${now.getDate()}${now.getHours()}${now.getMinutes()}${now.getSeconds()}${now.getMilliseconds()}_om`;
+      }${now.getDate()}${now.getHours()}${now.getMinutes()}${now.getSeconds()}${now.getMilliseconds()}`;
     };
-    const paymentRef = generateRef()
-    console.log('reference', paymentRef);
-    
+
     if (this.thirdFormGroup.valid) {
       switch (this.thirdFormGroup.get('paymentMethod')?.value) {
         case 'Sama Money': {
           if (this.thirdFormGroup.get('paymentPhone')?.value != '') {
+            //la reference de la commande
+            const paymentRef = `${generateRef()}.SAMA`;
+            this.initPayStatus = true;
+            console.log('reference', paymentRef);
             const paymentInfos = {
-              ...myConstants,
-              montant: '100',
+              amount: '100',
               orderId: `${paymentRef}`,
-              phone_client: `${this.thirdFormGroup.get('paymentPhone')?.value}`,
-              description: 'Test achat',
+              phone_number: `${this.thirdFormGroup.get('paymentPhone')?.value}`,
+              callback_url: `${environment.host}payment/callback/sama`,
+              description: 'Paiement adhesion BSTP MALI',
             };
 
             this.generalService.samaPay(paymentInfos).subscribe({
-              next: (result: any) => {},
+              next: (result: any) => {
+                console.log('result', result);
+                if (result.etat == 'OK') {
+                  this.initPayMsg = result.message;
+                  this.messages = [
+                    { severity: 'info', detail: this.initPayMsg! },
+                  ];
+                  console.log('reference', paymentRef);
+                  console.log(
+                    'host',
+                    `${environment.host}payment/${paymentRef}`
+                  );
+
+                  const source = new EventSource(
+                    `${environment.host}payment/${paymentRef}`
+                  );
+
+                  source.onmessage = (event) => {
+                    const data = JSON.parse(event.data);
+                    console.log('Payment event data:', data);
+
+                    if (data.status === 'confirmed') {
+                      // subscribeModule(false, false);
+                      this.paymentSuccess = true;
+                      this.cdr.detectChanges();
+                      console.log('Paiement confirmé !');
+                      source.close();
+                    }
+                  };
+
+                  source.onerror = (error) => {
+                    console.error('EventSource failed:', error);
+                    source.close();
+                  };
+                } else {
+                }
+              },
               error: (error: any) => {},
+              complete: () => {
+                this.initPayStatus = false;
+              },
             });
           }
           break;
         }
         case 'Moov Money': {
           if (this.thirdFormGroup.get('paymentPhone')?.value != '') {
+            //la reference de la commande
+            let paymentRef = `${generateRef()}.MOOV`;
+            console.log('reference', paymentRef);
+            this.initPayStatus = true;
             const paymentInfos = {
-              ...myConstants,
-              montant: '100',
-              orderId: 'bstp_0007',
+              amount: 200,
+              orderId: `${paymentRef}`,
+              phone_number: `${this.thirdFormGroup.get('paymentPhone')?.value}`,
               remarks: 'NGS',
-              description: 'Achat de credit NG SYSTEM',
+              description: 'Paiement adhesion BSTP Mali',
               type: 'PAY',
-              telephone: `${this.thirdFormGroup.get('paymentPhone')?.value}`,
+              callback_url: `${environment.host}payment/callback/moov`,
             };
 
             this.generalService.moovPay(paymentInfos).subscribe({
-              next: (result: any) => {},
+              next: (result: any) => {
+                console.log('result', result);
+                if (result.etat == 'OK') {
+                  this.initPayMsg = result.message;
+                  this.messages = [
+                    { severity: 'info', detail: this.initPayMsg! },
+                  ];
+                  console.log('reference', paymentRef);
+                  console.log(
+                    'host',
+                    `${environment.host}payment/${paymentRef}`
+                  );
+
+                  const source = new EventSource(
+                    `${environment.host}payment/${paymentRef}`
+                  );
+
+                  source.onmessage = (event) => {
+                    const data = JSON.parse(event.data);
+                    console.log('Payment event data:', data);
+
+                    if (data.status === 'confirmed') {
+                      // subscribeModule(false, false);
+                      this.paymentSuccess = true;
+                      this.cdr.detectChanges();
+                      console.log('Paiement confirmé !');
+                      source.close();
+                    }
+                  };
+
+                  source.onerror = (error) => {
+                    console.error('EventSource failed:', error);
+                    source.close();
+                  };
+                } else {
+                }
+              },
               error: (error: any) => {},
+              complete: () => {
+                this.initPayStatus = false;
+              },
             });
           }
           break;
         }
         case 'Orange Money': {
           if (this.thirdFormGroup.get('paymentPhone')?.value != '') {
+            //la reference de la commande
+            const paymentRef = `${generateRef()}.OM`;
+            console.log('reference', paymentRef);
             this.initPayStatus = true;
             let paymentInfos = {
               amount: '100',
@@ -167,10 +267,12 @@ export class DevenezMembreComponent {
                   this.messages = [
                     { severity: 'info', detail: this.initPayMsg! },
                   ];
-                  console.log("reference", paymentRef);
-                  console.log("host", `${environment.host}payment/${paymentRef}`);
-                  
-                  
+                  console.log('reference', paymentRef);
+                  console.log(
+                    'host',
+                    `${environment.host}payment/${paymentRef}`
+                  );
+
                   const source = new EventSource(
                     `${environment.host}payment/${paymentRef}`
                   );
@@ -182,7 +284,7 @@ export class DevenezMembreComponent {
                     if (data.status === 'confirmed') {
                       // subscribeModule(false, false);
                       this.paymentSuccess = true;
-                      this.cdr.detectChanges(); 
+                      this.cdr.detectChanges();
                       console.log('Paiement confirmé !');
                       source.close();
                     }
@@ -238,4 +340,14 @@ export class DevenezMembreComponent {
   getSelectedMethod() {
     return this.electronicMethods.find((m) => m.value === this.selectedMethod);
   }
+
+  goToHomePage(){
+  //  this.paymentSuccess=false;
+   this.firstFormGroup.reset();
+   this.secondFormGroup.reset();
+   this.thirdFormGroup.reset();
+   this.router.navigate(['/']);
+  }
+
+ 
 }

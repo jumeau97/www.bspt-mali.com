@@ -56,15 +56,15 @@ export class GeneralService {
 
   // SAMA MONEY
   samaPay(body: any) {
-    return this.http.post<any>(`${this.paymentBaseUrl}sama/pay`, body);
+    return this.http.post<any>(`${this.host}ngsystem/pay/sama`, body);
   }
   // MOOV MONEY
   moovPay(body: any) {
-    return this.http.post<any>(`${this.paymentBaseUrl}moov/transaction`, body);
+    return this.http.post<any>(`${this.host}ngsystem/pay/moov`, body);
   }
 
   //Stripe pay
   stripePay(body: any) {
-    return this.http.post<any>(`${this.paymentBaseUrl}stripe/pay`, body);
+    return this.http.post<any>(`${this.host}stripe/pay`, body);
   }
 }

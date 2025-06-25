@@ -42,7 +42,7 @@
        
             <ul class="nav navbar-nav" *ngIf="menu.subMenu">
               <li [ngClass]="hasActiveSubMenu(menu.subMenu) ? 'active' : ''">
-                <a routerLink="javascript:;">{{ menu.title }} <i class="fa fa-chevron-down"></i></a>
+                <a [routerLink]="null">{{ menu.title }} <i class="fa fa-chevron-down"></i></a>
                 <ul class="sub-menu">
                   <li *ngFor="let subMenu of menu.subMenu; index as j">
                     <a [routerLink]="subMenu.link">{{ subMenu.title }}</a>
