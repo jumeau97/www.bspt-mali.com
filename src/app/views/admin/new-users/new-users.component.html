@@ -1,0 +1,141 @@
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"
+    >BSTP MALI</a
+  >
+  <button
+    class="navbar-toggler position-absolute d-md-none collapsed"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#sidebarMenu"
+    aria-controls="sidebarMenu"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search"> -->
+  <!-- <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="#">Sign out</a>
+    </div>
+  </div> -->
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <app-nav></app-nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+      >
+        <h1 class="h2">Mes offres</h1>
+        <!-- <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              Share
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              Export
+            </button>
+          </div>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-secondary dropdown-toggle"
+          >
+            <span data-feather="calendar" class="align-text-bottom"></span>
+            This week
+          </button>
+        </div> -->
+      </div>
+
+      <!-- OUR SERVICES SECTION START -->
+      <div class="section-full bg-gray p-t20 p-b80">
+        <div class="container">
+          <!-- TITLE START-->
+          <!-- <div class="section-head text-center">
+            <h2 class="text-uppercase">Our Services</h2>
+            <div class="wt-separator-outer">
+              <div class="wt-separator site-bg-primary"></div>
+            </div>
+          </div> -->
+          <!-- TITLE END-->
+          <div class="mfp-gallery clearfix">
+            <div class="row">
+              <div class="m-b20">
+                <a routerLink="/admin/publish-new-offers"
+                  ><button class="btn btn-primary">Nouveau utilisateur</button></a
+                >
+              </div>
+              <form>
+                <div class="row">
+                  <div class="col-md-5 col-sm-5 mb-1">
+                    <ng-select placeholder="Choisir le statut">
+                      <ng-option> slect 1 </ng-option>
+                    </ng-select>
+                  </div>
+
+                  <div class="col-md-5 col-sm-5 mb-1">
+                    <ng-select placeholder="Choisir l'activité">
+                      <ng-option> slect1 </ng-option>
+                    </ng-select>
+                  </div>
+                  <div class="col-md-2 col-sm-2">
+                    <div class="form-group">
+                      <button
+                        type="submit"
+                        value="submit"
+                        class="site-button btn-block"
+                      >
+                        Rechercher
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <!-- <th scope="col">#</th> -->
+                      <th scope="col">Nom</th>
+                      <th scope="col">Prénom</th>
+                      <th scope="col">E-mail</th>
+                      <th scope="col">Role</th>
+                      <th scope="col">Statut</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of users">
+                    <td>{{item.lastName}}</td>
+                    <td>{{item.firstName}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.firstName}}</td>
+                    <td> <span class="badge text-bg-warning">WAITING</span> </td>
+                  
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- PAGINATION START -->
+              <div class="pagination-bx clearfix d-flex justify-content-center">
+                <ul class="custom-pagination pagination-1">
+                  <li><a href="#">&laquo;</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                  <li><a href="#">&raquo;</a></li>
+                </ul>
+              </div>
+              <!-- PAGINATION END -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- OUR SERVICES SECTION END -->
+    </main>
+  </div>
+</div>

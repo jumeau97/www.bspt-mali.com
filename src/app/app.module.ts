@@ -5,13 +5,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
-import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbAlertModule,
+  NgbModule,
+  NgbPaginationModule,
+} from '@ng-bootstrap/ng-bootstrap';
 import { CountUpModule } from 'ngx-countup';
 import { CarouselModule } from 'primeng/carousel';
 import { NgChartsModule } from 'ng2-charts';
 // import { SlickCarouselModule } from 'ngx-slick-carousel';
 // import { SwiperModule } from 'swiper/angular';
-
 
 // import { AccordionModule } from 'primeng/accordion';
 // import { AutoCompleteModule } from 'primeng/autocomplete';
@@ -140,6 +143,9 @@ import { SigninComponent } from './views/auth/signin/signin.component';
 import { DetailsComponent } from './views/offres/details/details.component';
 import { SafeHTMLPipe } from './views/offres/details/safe-html.pipe';
 import { TextTruncatePipe } from './views/offres/details/text-truncate.pipe';
+import { AdminComponent } from './views/admin/admin.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BstpInterceptor } from './Auth/bstp-interceptor/bstp.interceptor';
 // import { TabMenuModule } from 'primeng/tabmenu';
 // import { TableModule } from 'primeng/table';
 // import { TabViewModule } from 'primeng/tabview';
@@ -159,8 +165,6 @@ import { TextTruncatePipe } from './views/offres/details/text-truncate.pipe';
 // import { CardModule } from 'primeng/card';
 // import { BlockUIModule } from 'primeng/blockui';
 // import { ProgressSpinnerModule } from 'primeng/progressspinner';
-
-
 
 @NgModule({
   declarations: [
@@ -222,8 +226,7 @@ import { TextTruncatePipe } from './views/offres/details/text-truncate.pipe';
     DetailsComponent,
 
     SafeHTMLPipe,
-    TextTruncatePipe
-    
+    TextTruncatePipe,
   ],
   imports: [
     BrowserModule,
@@ -231,13 +234,13 @@ import { TextTruncatePipe } from './views/offres/details/text-truncate.pipe';
     NgbModule,
     FormsModule,
     NgbPaginationModule,
-     NgbAlertModule,
-     CountUpModule,
-     CarouselModule,
-     BrowserAnimationsModule,
-     NgChartsModule,
-     ChartModule,
-     ReactiveFormsModule,
+    NgbAlertModule,
+    CountUpModule,
+    CarouselModule,
+    BrowserAnimationsModule,
+    NgChartsModule,
+    ChartModule,
+    ReactiveFormsModule,
     //  AvatarModule,
     //  AvatarGroupModule,
     //  BrowserModule,
@@ -269,7 +272,7 @@ import { TextTruncatePipe } from './views/offres/details/text-truncate.pipe';
     //  DynamicDialogModule,
     //  EditorModule,
     //  FieldsetModule,
-     FileUploadModule,
+    FileUploadModule,
     //  GalleriaModule,
     //  InplaceModule,
     //  InputMaskModule,
@@ -284,7 +287,7 @@ import { TextTruncatePipe } from './views/offres/details/text-truncate.pipe';
     //  MenuModule,
     //  MenubarModule,
     //  MessageModule,
-     MessagesModule,
+    MessagesModule,
     //  MultiSelectModule,
     //  OrganizationChartModule,
     //  OrderListModule,
@@ -310,7 +313,7 @@ import { TextTruncatePipe } from './views/offres/details/text-truncate.pipe';
     //  SpinnerModule,
     //  SplitterModule,
     //  SplitButtonModule,
-     StepsModule,
+    StepsModule,
     //  TableModule,
     //  TabMenuModule,
     //  TabViewModule,
@@ -328,10 +331,15 @@ import { TextTruncatePipe } from './views/offres/details/text-truncate.pipe';
     //  TreeTableModule,
     //  AnimateModule,
     //  CardModule,
-
-    
   ],
-  providers: [{provide: HashLocationStrategy, useClass: PathLocationStrategy}], //gestion de la redirection
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HashLocationStrategy, useClass: PathLocationStrategy },
+      {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BstpInterceptor,
+      multi: true,
+    },
+  ], //gestion de la redirection
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

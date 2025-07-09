@@ -1,0 +1,309 @@
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"
+    >BSTP MALI</a
+  >
+  <button
+    class="navbar-toggler position-absolute d-md-none collapsed"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#sidebarMenu"
+    aria-controls="sidebarMenu"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search"> -->
+  <!-- <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="#">Sign out</a>
+    </div>
+  </div> -->
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- <nav
+      id="sidebarMenu"
+      class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+    >
+      <div class="position-sticky pt-3 sidebar-sticky">
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">
+              <span data-feather="home" class="align-text-bottom"></span>
+              Profil
+            </a>
+          </li>
+        </ul>
+        <h6
+          class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase"
+        >
+          <span>Menus principal</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle" class="align-text-bottom"></span>
+          </a>
+        </h6>
+        <ul class="nav nav-pills flex-column">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">
+              <span data-feather="home" class="align-text-bottom"></span>
+              Accueil
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">
+              <span data-feather="file" class="align-text-bottom"></span>
+              Appels d'offres
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span
+                data-feather="shopping-cart"
+                class="align-text-bottom"
+              ></span>
+              Mes offres
+            </a>
+          </li>
+        </ul>
+
+        <h6
+          class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase"
+        >
+          <span>Paramètres</span>
+          <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle" class="align-text-bottom"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text" class="align-text-bottom"></span>
+              Mon profil
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text" class="align-text-bottom"></span>
+              Déconnexion
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav> -->
+
+    <app-nav></app-nav>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+      >
+        <h1 class="h2">Appels d'offres</h1>
+        <!-- <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              Share
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary">
+              Export
+            </button>
+          </div>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-secondary dropdown-toggle"
+          >
+            <span data-feather="calendar" class="align-text-bottom"></span>
+            This week
+          </button>
+        </div> -->
+      </div>
+
+      <!-- OUR SERVICES SECTION START -->
+      <div class="section-full bg-gray p-t20 p-b80">
+        <div class="container">
+          <!-- TITLE START-->
+          <!-- <div class="section-head text-center">
+            <h2 class="text-uppercase">Our Services</h2>
+            <div class="wt-separator-outer">
+              <div class="wt-separator site-bg-primary"></div>
+            </div>
+          </div> -->
+          <!-- TITLE END-->
+          <div class="mfp-gallery clearfix">
+            <div class="row">
+              <form>
+                <div class="row">
+                  <div class="col-md-5 col-sm-5 mb-1">
+                    <ng-select placeholder="Choisir le statut">
+                      <ng-option> slect 1 </ng-option>
+                    </ng-select>
+                  </div>
+
+                  <div class="col-md-5 col-sm-5 mb-1">
+                    <ng-select placeholder="Choisir l'activité">
+                      <ng-option> slect1 </ng-option>
+                    </ng-select>
+                  </div>
+                  <div class="col-md-2 col-sm-2">
+                    <div class="form-group">
+                      <button
+                        type="submit"
+                        value="submit"
+                        class="site-button btn-block"
+                      >
+                        Rechercher
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <!-- <div class="col-lg-4 col-md-6 m-b30" *ngFor="let item of offers">
+                <div class="wt-box bg-white radius-md overflow-hide">
+                  <div class="wt-thum-bx wt-img-overlay1 wt-img-effect zoom">
+                    <img
+                      src="http://127.0.0.1:8000/images/logoFiles/{{
+                        item.enterprise.logoName
+                      }}"
+                      alt=""
+                    />
+                    <div class="overlay-bx">
+                      <div class="overlay-icon">
+                        <a href="services-detail.html">
+                          <i class="fa fa-external-link wt-icon-box-xs"></i>
+                        </a>
+                        <a class="mfp-link" href="images/our-work/pic1.jpg">
+                          <i class="fa fa-arrows-alt wt-icon-box-xs"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="wt-info p-a20">
+                    <h4 class="m-t0">{{ item.enterprise.name }}</h4>
+                    <p>
+                      {{ item.name }}
+                    </p>
+                    <p>
+                      <span
+                        *ngFor="let act of item.activities"
+                        class="badge site-bg-primary text-uppercase"
+                        >{{ act.name }}</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div> -->
+
+              <div
+                class="col-xl-8 col-lg-8 col-md-8"
+                *ngFor="let item of offers"
+              >
+                <div
+                  class="blog-post date-style-2 clearfix bg-white overflow-hide radius-md latest-blog-4 three-block-style"
+                >
+                  <div class="wt-post-media wt-img-effect wt-img-overlay3">
+                    <a href="blog-grid.html"
+                      ><img
+                        src="http://127.0.0.1:8000/images/logoFiles/{{
+                          item.enterprise.logoName
+                        }}"
+                        alt=""
+                    /></a>
+                  </div>
+                  <div class="wt-post-info p-a20">
+                    <div class="wt-post-title">
+                      <h4 class="post-title text-uppercase">
+                        {{ item.enterprise.name }}
+                      </h4>
+                    </div>
+
+                    <div class="wt-post-meta">
+                      <ul>
+                        <li class="post-date" style="width: 100px">
+                          <!-- <i class="fa fa-calendar"></i
+                              ><strong>16 May</strong> <span> 2023</span> -->
+                          <span
+                            [ngClass]="{
+                              'text-bg-danger':
+                                checkLimitDate(item.endDate) == 'EXPIRÉ',
+                              'text-bg-primary':
+                                checkLimitDate(item.endDate) == 'EN COURS'
+                            }"
+                            class="badge"
+                            >{{ checkLimitDate(item.endDate) }}</span
+                          >
+                        </li>
+                        <!-- <li class="post-author">
+                              <i class="fa fa-user"></i
+                              ><a href="blog-grid.html">By <span>John</span></a>
+                            </li>
+                            <li class="post-comment">
+                              <i class="fa fa-comments"></i>
+                              <a href="blog-grid.html">12 comment</a>
+                            </li> -->
+                      </ul>
+                    </div>
+
+                    <div class="wt-post-text">
+                      <p>
+                        {{ item.name }}
+                      </p>
+                      <p>
+                        <span
+                          *ngFor="let act of item.activities"
+                          class="badge site-bg-primary text-uppercase m-r10"
+                          >{{ act.name }}</span
+                        >
+                      </p>
+                    </div>
+                    <div class="m-t10">
+                      <span
+                        class="h6"
+                        style="
+                          font-style: italic;
+                          font-weight: bold;
+                          font-family: 'Times New Roman', serif;
+                        "
+                        >{{ item.startDate | date : "dd/MM/YYYY HH:mm" }}</span
+                      >
+                      -
+                      <span
+                        class="h6"
+                        style="
+                          font-style: italic;
+                          font-weight: bold;
+                          font-family: 'Times New Roman', serif;
+                        "
+                        >{{ item.endDate | date : "dd/MM/YYYY HH:mm" }}</span
+                      >
+                    </div>
+                    <a
+                      href="blog-grid.html"
+                      title="READ MORE"
+                      rel="bookmark"
+                      class="site-button-link"
+                      >Read More</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- PAGINATION START -->
+              <div class="pagination-bx clearfix d-flex justify-content-center">
+                <ul class="custom-pagination pagination-1">
+                  <li><a href="#">&laquo;</a></li>
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                  <li><a href="#">&raquo;</a></li>
+                </ul>
+              </div>
+              <!-- PAGINATION END -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- OUR SERVICES SECTION END -->
+    </main>
+  </div>
+</div>

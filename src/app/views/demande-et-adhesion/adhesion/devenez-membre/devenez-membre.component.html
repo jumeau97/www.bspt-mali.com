@@ -1,53 +1,60 @@
-<!-- INNER PAGE BANNER -->
-<div
-  class="wt-bnr-inr overlay-wraper"
-  style="background-image: url(images/banner/about-banner.jpg)"
->
-  <div class="overlay-main bg-black opacity-05"></div>
-  <div class="container">
-    <div class="wt-bnr-inr-entry">
-      <h1 class="text-white">FORMULAIRE POUR DEVENIR MEMBRE</h1>
-      <!-- BREADCRUMB ROW -->
-      <ul class="wt-breadcrumb breadcrumb-style-2">
-        <li>
-          <a href="javascript:void(0);"><i class="fa fa-home"></i> Accueil</a>
-        </li>
-        <li>Devenez-membre</li>
-      </ul>
-      <!-- BREADCRUMB  ROW END -->
+<div class="page-wraper">
+  <app-header></app-header>
+
+  <div class="page-content">
+    <!-- INNER PAGE BANNER -->
+    <div
+      class="wt-bnr-inr overlay-wraper"
+      style="background-image: url(images/banner/about-banner.jpg)"
+    >
+      <div class="overlay-main bg-black opacity-05"></div>
+      <div class="container">
+        <div class="wt-bnr-inr-entry">
+          <h1 class="text-white">FORMULAIRE POUR DEVENIR MEMBRE</h1>
+          <!-- BREADCRUMB ROW -->
+          <ul class="wt-breadcrumb breadcrumb-style-2">
+            <li>
+              <a href="javascript:void(0);"
+                ><i class="fa fa-home"></i> Accueil</a
+              >
+            </li>
+            <li>Devenez-membre</li>
+          </ul>
+          <!-- BREADCRUMB  ROW END -->
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<!-- INNER PAGE BANNER END -->
+    <!-- INNER PAGE BANNER END -->
 
-<!-- SECTION CONTENT START -->
-<div class="section-full p-t80 p-b50">
-  <!-- PRODUCT DETAILS -->
-  <div class="container woo-entry">
     <!-- SECTION CONTENT START -->
-    <div class="section-content">
-      <div class="row">
-        <!-- FROM STYEL 1 -->
-        <div class="col-lg-12 col-md-12 m-b30">
-          <div class="section-head">
-            <h2 class="text-uppercase">Devenez membre de la BSTP-MALI</h2>
-            <div class="wt-separator-outer">
-              <div class="wt-separator site-bg-primary"></div>
-            </div>
-            <p>
-              Vous êtes une PME locale et vous voulez bénéficiez d’opportunités,
-              de partenariats, de formations et d’accès aux financements ?
-              <br />
-              Vous êtes une entreprise internationale, vous voulez avoir accès à
-              des entreprises compétentes et compétitives, gagner du temps,
-              économiser de l’argent, mettre en pratique votre responsabilité
-              environnementale et sociale ?
-            </p>
-          </div>
+    <div class="section-full p-t80 p-b50">
+      <!-- PRODUCT DETAILS -->
+      <div class="container woo-entry">
+        <!-- SECTION CONTENT START -->
+        <div class="section-content">
+          <div class="row">
+            <!-- FROM STYEL 1 -->
+            <div class="col-lg-12 col-md-12 m-b30">
+              <div class="section-head">
+                <h2 class="text-uppercase">Devenez membre de la BSTP-MALI</h2>
+                <div class="wt-separator-outer">
+                  <div class="wt-separator site-bg-primary"></div>
+                </div>
+                <p>
+                  Vous êtes une PME locale et vous voulez bénéficiez
+                  d’opportunités, de partenariats, de formations et d’accès aux
+                  financements ?
+                  <br />
+                  Vous êtes une entreprise internationale, vous voulez avoir
+                  accès à des entreprises compétentes et compétitives, gagner du
+                  temps, économiser de l’argent, mettre en pratique votre
+                  responsabilité environnementale et sociale ?
+                </p>
+              </div>
 
-          <div>
-            <form>
-              <!-- <div class="row">
+              <div>
+                <form>
+                  <!-- <div class="row">
                 <div class="col-md-8 col-sm-6">
                   <div class="form-group">
                     <label>Raison social</label>
@@ -167,169 +174,220 @@
                 ></textarea>
               </div> -->
 
-              <!-- <button
+                  <!-- <button
                 type="submit"
                 value="submit"
                 class="site-button site-bg-primary"
               >
                 Envoyer
               </button> -->
-              <!-- <button
+                  <!-- <button
                 type="submit"
                 value="submit"
                 class="site-button site-button-secondry m-3"
               >
                 Annuler
               </button> -->
-            </form>
-            <div class="custom-stepper" #top id="top" *ngIf="!paymentSuccess">
-              <!-- Étapes -->
-              <div class="stepper-header">
+                </form>
                 <div
-                  class="step"
-                  *ngFor="let step of steps; let i = index"
-                  [class.active]="currentStep === i"
-                  [class.completed]="i < currentStep"
-                  (click)="goToStep(i)"
+                  class="custom-stepper"
+                  #top
+                  id="top"
+                  *ngIf="!paymentSuccess"
                 >
-                  <span>{{ step.label }}</span>
-                </div>
-              </div>
-
-              <!-- Formulaire actif -->
-              <div class="stepper-body">
-                <form *ngIf="currentStep === 0" [formGroup]="firstFormGroup">
-                  <h3>Étape 1 : Informations Générales</h3>
-                  <div class="row">
-                    <div class="col-md-8 col-sm-6">
-                      <div class="form-group">
-                        <label>Raison social</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Entrez la raison social"
-                          formControlName="raisonSociale"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                      <div class="form-group">
-                        <label>Année de création</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Entrez l'année de création"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                      <div class="form-group">
-                        <label>Statut juridique</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Entrez le statut juridique"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-md-8 col-sm-6">
-                      <div class="form-group">
-                        <label>Secteur d'activité</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Entrez le secteur d'activité"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                      <div class="form-group">
-                        <label>Répresenté par</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Entrez la représentation"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                      <div class="form-group">
-                        <label>Adresse e-mail</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Entrez l'adresse e-mail"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                      <div class="form-group">
-                        <label>Téléphone</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Entrez le numéro portable"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                      <div class="form-group">
-                        <label>Ville</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Entrez la ville"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                      <div class="form-group">
-                        <label>Localisation Exacte</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Entrez la localisation exacte"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                      <div class="form-group">
-                        <label>Boite Postale</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Entrez la boite postale"
-                        />
-                      </div>
+                  <!-- Étapes -->
+                  <div class="stepper-header">
+                    <div
+                      class="step"
+                      *ngFor="let step of steps; let i = index"
+                      [class.active]="currentStep === i"
+                      [class.completed]="i < currentStep"
+                      (click)="goToStep(i)"
+                    >
+                      <span>{{ step.label }}</span>
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <label>Activité Principale</label>
-                    <textarea
-                      name=""
-                      id=""
-                      class="form-control"
-                      placeholder="Entrez l'activité principale"
-                      rows="3"
-                    ></textarea>
-                  </div>
-                  <div class="card flex justify-content-center m-b20">
+                  <!-- Formulaire actif -->
+                  <div class="stepper-body">
+                    <form
+                      *ngIf="currentStep === 0"
+                      [formGroup]="firstFormGroup"
+                    >
+                      <h3>Étape 1 : Informations Générales</h3>
+                      <div class="row">
+                        <div class="col-md-8 col-sm-6">
+                          <div class="form-group">
+                            <label>Raison social</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Entrez la raison social"
+                              formControlName="socialReason"
+                            />
+                            <div class="error-messages">
+                              <ng-container
+                                *ngFor="
+                                  let error of error_messages.socialReason
+                                "
+                              >
+                                <div
+                                  class="error-message"
+                                  *ngIf="
+                                    firstFormGroup
+                                      .get('socialReason')!
+                                      .hasError(error.type) &&
+                                    (firstFormGroup.get('socialReason')!
+                                      .dirty ||
+                                      firstFormGroup.get('socialReason')!
+                                        .touched ||
+                                      submitted)
+                                  "
+                                >
+                                  {{ error.message }}
+                                </div>
+                              </ng-container>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                          <div class="form-group">
+                            <label>Année de création</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Entrez l'année de création"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                          <div class="form-group">
+                            <label>Statut juridique</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Entrez le statut juridique"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-8 col-sm-6">
+                          <div class="form-group">
+                            <label>Secteur d'activité</label>
+                            <ng-select
+                              [multiple]="true"
+                              [closeOnSelect]="false"
+                              [searchable]="true"
+                              [selectableGroup]="true"
+                              placeholder="Choisir le statut"
+                              formControlName="activities"
+                              [ariaChecked]="true"
+                            >
+                              <ng-option
+                                *ngFor="let item of activities"
+                                [value]="item.slug"
+                              >
+                                {{ item.name }}
+                              </ng-option>
+                            </ng-select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                          <div class="form-group">
+                            <label>Répresenté par</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Entrez la représentation"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                          <div class="form-group">
+                            <label>Adresse e-mail</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Entrez l'adresse e-mail"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                          <div class="form-group">
+                            <label>Téléphone</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Entrez le numéro portable"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4 col-sm-6">
+                          <div class="form-group">
+                            <label>Ville</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Entrez la ville"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                          <div class="form-group">
+                            <label>Localisation Exacte</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Entrez la localisation exacte"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                          <div class="form-group">
+                            <label>Boite Postale</label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Entrez la boite postale"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Activité Principale</label>
+                        <textarea
+                          name=""
+                          id=""
+                          class="form-control"
+                          placeholder="Entrez l'activité principale"
+                          rows="3"
+                        ></textarea>
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="file"
+                          name="file"
+                          (change)="onFileChange($event)"
+                          accept="application/pdf"
+                        />
+                      </div>
+                      <!-- <div class="card flex justify-content-center m-b20">
                     <p-fileUpload
                       [showUploadButton]="false"
                       cancelStyleClass="p-button p-button-secondary"
                       chooseLabel="Choisir"
                       cancelLabel="Annuler"
-                      name="demo[]"
                       url="https://www.primefaces.org/cdn/api/upload.php"
                       [multiple]="false"
                       accept="application/pdf"
+                      name="file"
+                      (change)="onFileChange($event)"
                     >
                       <ng-template pTemplate="toolbar">
                         <div class="py-3">
@@ -343,57 +401,63 @@
                         </div>
                       </ng-template>
                     </p-fileUpload>
-                  </div>
-                  <button
-                    class="site-button site-bg-primary"
-                    (click)="nextStep()"
-                    [disabled]="firstFormGroup.invalid"
-                  >
-                    Suivant
-                  </button>
-                </form>
+                  </div> -->
+                      <button
+                        class="site-button site-bg-primary"
+                        (click)="nextStep()"
+                        [disabled]="firstFormGroup.invalid"
+                      >
+                        Suivant
+                      </button>
+                    </form>
 
-                <form *ngIf="currentStep === 1" [formGroup]="secondFormGroup">
-                  <h3>Étape 2 : Choisissez le type de paiement</h3>
-                  <div class="form-group">
-                    <label>Type de paiement</label>
-                    <div>
-                      <input
-                        type="radio"
-                        formControlName="paymentType"
-                        value="electronic"
-                        id="electronic"
-                      />
-                      <label for="electronic">Paiement Électronique</label>
-                    </div>
-                    <div>
-                      <input
-                        type="radio"
-                        formControlName="paymentType"
-                        value="physique"
-                        id="physique"
-                      />
-                      <label for="physique">Paiement Physique</label>
-                    </div>
-                  </div>
-                  <button
-                    class="site-button site-button-secondry m-3"
-                    (click)="previousStep()"
-                  >
-                    Précedent
-                  </button>
-                  <button
-                    class="site-button site-button-primary"
-                    (click)="nextStep()"
-                    [disabled]="secondFormGroup.invalid"
-                  >
-                    Suivant
-                  </button>
-                </form>
+                    <form
+                      *ngIf="currentStep === 1"
+                      [formGroup]="secondFormGroup"
+                    >
+                      <h3>Étape 2 : Choisissez le type de paiement</h3>
+                      <div class="form-group">
+                        <label>Type de paiement</label>
+                        <div>
+                          <input
+                            type="radio"
+                            formControlName="paymentType"
+                            value="electronic"
+                            id="electronic"
+                          />
+                          <label for="electronic">Paiement Électronique</label>
+                        </div>
+                        <div>
+                          <input
+                            type="radio"
+                            formControlName="paymentType"
+                            value="physique"
+                            id="physique"
+                          />
+                          <label for="physique">Paiement Physique</label>
+                        </div>
+                      </div>
+                      <button
+                        class="site-button site-button-secondry m-3"
+                        (click)="previousStep()"
+                      >
+                        Précedent
+                      </button>
+                      <button
+                        class="site-button site-button-primary"
+                        (click)="nextStep()"
+                        [disabled]="secondFormGroup.invalid"
+                      >
+                        Suivant
+                      </button>
+                    </form>
 
-                <form *ngIf="currentStep === 2" [formGroup]="thirdFormGroup">
-                  <h3>Étape 3 : Choisissez un moyen de paiement</h3>
-                  <!-- <div class="form-group" *ngIf="paymentType === 'electronic'">
+                    <form
+                      *ngIf="currentStep === 2"
+                      [formGroup]="thirdFormGroup"
+                    >
+                      <h3>Étape 3 : Choisissez un moyen de paiement</h3>
+                      <!-- <div class="form-group" *ngIf="paymentType === 'electronic'">
                     <label>Moyen de paiement électronique</label>
                     <div class="payment-options">
                       <label
@@ -481,109 +545,115 @@
                     </div>
                   </div> -->
 
-                  <div class="form-group" *ngIf="paymentType === 'electronic'">
-                    <label>Moyen de paiement électronique</label>
-
-                    <div class="row d-flex justify-content-center">
-                      <!-- <div class="col-md-6"> -->
                       <div
-                        class="col-sm-12 col-md-3 justify-content-center d-flex payment-options"
+                        class="form-group"
+                        *ngIf="paymentType === 'electronic'"
                       >
-                        <ng-container *ngIf="!selectedMethod">
-                          <!-- Affiche toutes les options si rien n’est sélectionné -->
-                          <label
-                            class="payment-option"
-                            *ngFor="let method of electronicMethods"
-                            (click)="onPaymentMethodSelected(method.value)"
+                        <label>Moyen de paiement électronique</label>
+
+                        <div class="row d-flex justify-content-center">
+                          <!-- <div class="col-md-6"> -->
+                          <div
+                            class="col-sm-12 col-md-3 justify-content-center d-flex payment-options"
                           >
-                            <img
-                              [src]="method.image"
-                              [alt]="method.label"
-                              class="payment-logo"
-                            />
-                            <span class="font-12">{{ method.label }}</span>
-                          </label>
-                        </ng-container>
+                            <ng-container *ngIf="!selectedMethod">
+                              <!-- Affiche toutes les options si rien n’est sélectionné -->
+                              <label
+                                class="payment-option"
+                                *ngFor="let method of electronicMethods"
+                                (click)="onPaymentMethodSelected(method.value)"
+                              >
+                                <img
+                                  [src]="method.image"
+                                  [alt]="method.label"
+                                  class="payment-logo"
+                                />
+                                <span class="font-12">{{ method.label }}</span>
+                              </label>
+                            </ng-container>
 
-                        <ng-container *ngIf="selectedMethod">
-                          <!-- Affiche uniquement la méthode sélectionnée -->
-                          <label class="payment-option">
-                            <img
-                              [src]="getSelectedMethod()?.image"
-                              [alt]="selectedMethod"
-                              class="payment-logo"
-                            />
-                            <span>{{ selectedMethod }}</span>
-                            <button
-                              type="button"
-                              (click)="resetSelection()"
-                              class="btn btn-sm btn-link"
+                            <ng-container *ngIf="selectedMethod">
+                              <!-- Affiche uniquement la méthode sélectionnée -->
+                              <label class="payment-option">
+                                <img
+                                  [src]="getSelectedMethod()?.image"
+                                  [alt]="selectedMethod"
+                                  class="payment-logo"
+                                />
+                                <span>{{ selectedMethod }}</span>
+                                <button
+                                  type="button"
+                                  (click)="resetSelection()"
+                                  class="btn btn-sm btn-link"
+                                >
+                                  Changer
+                                </button>
+                              </label>
+                            </ng-container>
+                          </div>
+                          <!-- </div> -->
+
+                          <!-- visa card  -->
+
+                          <div
+                            class="col-md-6"
+                            *ngIf="
+                              selectedMethod && selectedMethod === 'Carte Visa'
+                            "
+                          >
+                            <h4>Informations de la carte</h4>
+
+                            <div class="form-group">
+                              <label>Votre nom complet</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                formControlName="cardNumber"
+                                placeholder="1234 5678 9012 3456"
+                              />
+                            </div>
+                          </div>
+
+                          <!-- Formulaire pour le moyen sélectionné -->
+                          <!-- <div class="col-md-6"> -->
+                          <div
+                            class="col-md-6"
+                            *ngIf="
+                              selectedMethod &&
+                              selectedMethod != 'Carte Visa' &&
+                              !initPayStatus
+                            "
+                          >
+                            <h4>Informations pour {{ selectedMethod }}</h4>
+                            <!-- <div class="row"> -->
+                            <!-- <div class="col-md-6"> -->
+                            <div class="form-group">
+                              <label for="phone">Numéro de téléphone</label>
+                              <input
+                                id="phone"
+                                type="tel"
+                                class="form-control"
+                                formControlName="paymentPhone"
+                                placeholder="Ex: 74845276"
+                              />
+                            </div>
+                            <!-- </div> -->
+                            <!-- </div> -->
+                          </div>
+
+                          <div
+                            class="col-md-8 d-flex justify-content-center align-items-center bg-body-secondary"
+                            *ngIf="initPayStatus"
+                          >
+                            <div
+                              class="spinner-border text-primary"
+                              role="status"
                             >
-                              Changer
-                            </button>
-                          </label>
-                        </ng-container>
-                      </div>
-                      <!-- </div> -->
+                              <span class="sr-only">Loading...</span>
+                            </div>
+                          </div>
 
-                      <!-- visa card  -->
-
-                      <div
-                        class="col-md-6"
-                        *ngIf="
-                          selectedMethod && selectedMethod === 'Carte Visa'
-                        "
-                      >
-                        <h4>Informations de la carte</h4>
-
-                        <div class="form-group">
-                          <label>Votre nom complet</label>
-                          <input
-                            type="text"
-                            class="form-control"
-                            formControlName="cardNumber"
-                            placeholder="1234 5678 9012 3456"
-                          />
-                        </div>
-                      </div>
-
-                      <!-- Formulaire pour le moyen sélectionné -->
-                      <!-- <div class="col-md-6"> -->
-                      <div
-                        class="col-md-6"
-                        *ngIf="
-                          selectedMethod &&
-                          selectedMethod != 'Carte Visa' &&
-                          !initPayStatus
-                        "
-                      >
-                        <h4>Informations pour {{ selectedMethod }}</h4>
-                        <!-- <div class="row"> -->
-                        <!-- <div class="col-md-6"> -->
-                        <div class="form-group">
-                          <label for="phone">Numéro de téléphone</label>
-                          <input
-                            id="phone"
-                            type="tel"
-                            class="form-control"
-                            formControlName="paymentPhone"
-                            placeholder="Ex: 74845276"
-                          />
-                        </div>
-                        <!-- </div> -->
-                        <!-- </div> -->
-                      </div>
-
-                      <div
-                        class="col-md-8 d-flex justify-content-center align-items-center bg-body-secondary"
-                        *ngIf="initPayStatus"
-                      >
-                        <div class="spinner-border text-primary" role="status">
-                          <span class="sr-only">Loading...</span>
-                        </div>
-                      </div>
-
-                      <!-- <div
+                          <!-- <div
                         class="col-md-8 d-flex justify-content-center align-items-center"
                         *ngIf="initPayMsg"
                       >
@@ -594,79 +664,90 @@
                         />
                       </div> -->
 
-                      <button
-                        *ngIf="initPayMsg"
-                        class="border-0 site-button site-button-primary"
-                        type="button"
-                        disabled
+                          <button
+                            *ngIf="initPayMsg"
+                            class="border-0 site-button site-button-primary"
+                            type="button"
+                            disabled
+                          >
+                            <span
+                              class="spinner-grow spinner-grow-sm"
+                              aria-hidden="true"
+                            ></span>
+                            <span role="status">{{ initPayMsg }}...</span>
+                          </button>
+
+                          <!-- </div> -->
+                        </div>
+                      </div>
+
+                      <div
+                        class="form-group"
+                        *ngIf="paymentType === 'physique'"
                       >
-                        <span
-                          class="spinner-grow spinner-grow-sm"
-                          aria-hidden="true"
-                        ></span>
-                        <span role="status">{{ initPayMsg }}...</span>
+                        <label>Mode de paiement physique</label>
+                        <select
+                          formControlName="paymentMethod"
+                          class="form-control"
+                        >
+                          <option value="especes">Espèces</option>
+                          <option value="cheque">Chèque</option>
+                        </select>
+                      </div>
+                      <button
+                        class="site-button site-button-secondry m-3"
+                        (click)="previousStep()"
+                      >
+                        Retour
                       </button>
-
-                      <!-- </div> -->
-                    </div>
+                      <button
+                        *ngIf="!initPayMsg"
+                        class="site-button site-button-primary m-3"
+                        (click)="submitForm()"
+                      >
+                        Soumettre les dossiers
+                      </button>
+                    </form>
                   </div>
+                </div>
 
-                  <div class="form-group" *ngIf="paymentType === 'physique'">
-                    <label>Mode de paiement physique</label>
-                    <select
-                      formControlName="paymentMethod"
-                      class="form-control"
+                <div class="row justify-content-center">
+                  <div
+                    class="col-md-6 alert alert-success text-center"
+                    role="alert"
+                    *ngIf="paymentSuccess"
+                  >
+                    <h4 class="alert-heading mb-3">
+                      <img
+                        src="assets/success.gif"
+                        alt="Succès"
+                        class="img-fluid"
+                        style="max-height: 100px"
+                      />
+                    </h4>
+                    <p>
+                      Votre paiement a été effectué avec succès. Notre équipe
+                      analysera votre dossier et vous recontactera dans les plus
+                      brefs délais.
+                    </p>
+                    <button
+                      class="site-button site-bg-primary"
+                      (click)="goToHomePage()"
                     >
-                      <option value="especes">Espèces</option>
-                      <option value="cheque">Chèque</option>
-                    </select>
+                      Revenir sur page d'accueil
+                    </button>
                   </div>
-                  <button
-                    class="site-button site-button-secondry m-3"
-                    (click)="previousStep()"
-                  >
-                    Retour
-                  </button>
-                  <button
-                    *ngIf="!initPayMsg"
-                    class="site-button site-button-primary m-3"
-                    (click)="submitForm()"
-                  >
-                    Soumettre les dossiers
-                  </button>
-                </form>
+                </div>
               </div>
-            </div>
-
-            <div class="row justify-content-center">
-              <div
-                class="col-md-6 alert alert-success text-center"
-                role="alert"
-                *ngIf="paymentSuccess"
-              >
-                <h4 class="alert-heading mb-3">
-                  <img
-                    src="assets/success.gif"
-                    alt="Succès"
-                    class="img-fluid"
-                    style="max-height: 100px"
-                  />
-                </h4>
-                <p>
-                  Votre paiement a été effectué avec succès. Notre équipe
-                  analysera votre dossier et vous recontactera dans les plus
-                  brefs délais.
-                </p>
-                 <button class="site-button site-bg-primary" (click)="goToHomePage()"> Revenir sur page d'accueil</button>
-              </div>
-             
             </div>
           </div>
         </div>
+        <!-- SECTION CONTENT END -->
       </div>
+      <!-- PRODUCT DETAILS -->
     </div>
-    <!-- SECTION CONTENT END -->
+    <!-- CONTENT CONTENT END -->
+
+    <app-footer></app-footer>
   </div>
-  <!-- PRODUCT DETAILS -->
 </div>
-<!-- CONTENT CONTENT END -->

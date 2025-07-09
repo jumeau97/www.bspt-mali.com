@@ -1,62 +1,161 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>SiteBstpMali</title>
-  <base href="./">
-  	<!-- META -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+    <meta charset="utf-8" />
+    <title>SiteBstpMali</title>
+    <base href="/" />
+    <!-- META -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="keywords" content="" />
     <meta name="author" content="" />
-    <meta name="robots" content="" />    
+    <meta name="robots" content="" />
     <meta name="description" content="" />
 
-    
     <!-- FAVICONS ICON -->
     <link rel="icon" href="assets/images/bstp_mali.jpg" type="image/x-icon" />
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/bstp_mali.jpg" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/images/bstp_mali.jpg"
+    />
 
-    
     <!-- MOBILE SPECIFIC -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <!-- BOOTSTRAP STYLE SHEET -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/css/bootstrap.min.css"
+    />
     <!-- FONTAWESOME STYLE SHEET -->
-    <link rel="stylesheet" type="text/css" href="assets/css/fontawesome/css/font-awesome.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/css/fontawesome/css/font-awesome.min.css"
+    />
     <!-- FLATICON STYLE SHEET -->
-    <link rel="stylesheet" type="text/css" href="assets/css/flaticon.min.css">
-    <!-- ANIMATE STYLE SHEET --> 
-    <link rel="stylesheet" type="text/css" href="assets/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/flaticon.min.css" />
+    <!-- ANIMATE STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.min.css" />
     <!-- OWL CAROUSEL STYLE SHEET -->
     <!-- <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.min.css"> -->
     <!-- BOOTSTRAP SELECT BOX STYLE SHEET -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-select.min.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/css/bootstrap-select.min.css"
+    />
     <!-- MAGNIFIC POPUP STYLE SHEET -->
-    <link rel="stylesheet" type="text/css" href="assets/css/magnific-popup.min.css">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/css/magnific-popup.min.css"
+    />
     <!-- LOADER STYLE SHEET -->
-    <link rel="stylesheet" type="text/css" href="assets/css/loader.min.css">    
+    <link rel="stylesheet" type="text/css" href="assets/css/loader.min.css" />
     <!-- MAIN STYLE SHEET -->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
     <!-- THEME COLOR CHANGE STYLE SHEET -->
-	<link rel="stylesheet" class="skin" type="text/css" href="assets/css/skin/skin-1.css">
+    <link
+      rel="stylesheet"
+      class="skin"
+      type="text/css"
+      href="assets/css/skin/skin-1.css"
+    />
     <!-- CUSTOM  STYLE SHEET -->
-    <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css" />
 
-        
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/navbars-offcanvas/">
-    <link href="assets/css/navbar.css" rel="stylesheet">
-    
-    
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/5.2/examples/navbars-offcanvas/"
+    />
+
+    <!-- <link href="assets/css/navbar.css" rel="stylesheet" /> -->
+
     <!-- GOOGLE FONTS -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,400italic,500,500italic,700,700italic,900italic,900' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800italic,800,700italic' rel='stylesheet' type='text/css'>
-    <link href="https://fonts.googleapis.com/css?family=Crete+Round:400,400i&amp;subset=latin-ext" rel="stylesheet">
+    <link
+      href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,300italic,400italic,500,500italic,700,700italic,900italic,900"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800italic,800,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Crete+Round:400,400i&amp;subset=latin-ext"
+      rel="stylesheet"
+    />
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="js/angular-revolution.min.js"></script>
+    <style>
+      .error-message {
+        color: red;
+        font-size: 12px;
+      }
+      input.ng-touched.ng-invalid {
+        border: 1px solid red;
+      }
+    </style>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+       <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dashboard/">
+           <link href="assets/dashboard/dashboard.css" rel="stylesheet">
+
+     <!-- <link href="assets/sidebar/sidebars.css" rel="stylesheet"> -->
     <!-- Gestion de la section service  -->
     <!-- <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -81,55 +180,82 @@
         });
       });
     </script> -->
-    
-</head>
-<body id="bg">
-  <app-root></app-root>
-      <!-- STYLE SWITCHER END ==== -->
-      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  </head>
+  <body id="bg">
+    <app-root></app-root>
+    <!-- STYLE SWITCHER END ==== -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-      <script>
-        const ctx = document.getElementById('myChart');
-      
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-              label: '# of Votes',
+    <script>
+      const ctx = document.getElementById("myChart");
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+          datasets: [
+            {
+              label: "# of Votes",
               data: [12, 19, 3, 5, 2, 3],
-              borderWidth: 1
-            }]
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
           },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-      </script>
+        },
+      });
+    </script>
 
-<!-- JAVASCRIPT  FILES ========================================= --> 
-<script src="assets/js/jquery-3.7.1.min.assets/"></script><!-- JQUERY.MIN JS -->
-<script src="assets/js/popper.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script><!-- BOOTSTRAP.MIN JS -->
-<script src="assets/js/bootstrap-select.min.js"></script><!-- FORM JS -->
-<script src="assets/js/jquery.bootstrap-touchspin.min.js"></script><!-- FORM JS -->
-<script src="assets/js/magnific-popup.min.js"></script><!-- MAGNIFIC-POPUP JS -->
-<script src="assets/js/waypoints.min.js"></script><!-- WAYPOINTS JS -->
-<script src="assets/js/counterup.min.js"></script><!-- COUNTERUP JS -->
-<script src="assets/js/waypoints-sticky.min.js"></script><!-- COUNTERUP JS -->
-<script src="assets/js/isotope.pkgd.min.js"></script><!-- MASONRY  -->
-<script src="assets/js/imagesloaded.pkgd.min.js"></script><!-- MASONRY  -->
-<!-- <script src="assets/js/owl.carousel.min.js"></script> -->
-<script  src="assets/js/theia-sticky-sidebar.js"></script><!-- STICKY SIDEBAR  -->
-<script src="assets/js/jquery.owl-filter.js"></script>
-<script src="assets/js/scrolla.min.js"></script><!-- ON SCROLL CONTENT ANIMTE   --> 
-<script src="assets/js/shortcode.js"></script><!-- SHORTCODE FUCTIONS  -->
+    <!-- JAVASCRIPT  FILES ========================================= -->
+    <script src="assets/js/jquery-3.7.1.min.assets/"></script>
+    <!-- JQUERY.MIN JS -->
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- BOOTSTRAP.MIN JS -->
+    <script src="assets/js/bootstrap-select.min.js"></script>
+    <!-- FORM JS -->
+    <script src="assets/js/jquery.bootstrap-touchspin.min.js"></script>
+    <!-- FORM JS -->
+    <script src="assets/js/magnific-popup.min.js"></script>
+    <!-- MAGNIFIC-POPUP JS -->
+    <script src="assets/js/waypoints.min.js"></script>
+    <!-- WAYPOINTS JS -->
+    <script src="assets/js/counterup.min.js"></script>
+    <!-- COUNTERUP JS -->
+    <script src="assets/js/waypoints-sticky.min.js"></script>
+    <!-- COUNTERUP JS -->
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <!-- MASONRY  -->
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <!-- MASONRY  -->
+    <!-- <script src="assets/js/owl.carousel.min.js"></script> -->
+    <script src="assets/js/theia-sticky-sidebar.js"></script>
+    <!-- STICKY SIDEBAR  -->
+    <script src="assets/js/jquery.owl-filter.js"></script>
+    <script src="assets/js/scrolla.min.js"></script>
+    <!-- ON SCROLL CONTENT ANIMTE   -->
+    <script src="assets/js/shortcode.js"></script>
+    <!-- SHORTCODE FUCTIONS  -->
 
-<script src="assets/js/custom.js"></script><!-- CUSTOM FUCTIONS  -->
+    <script src="assets/js/custom.js"></script>
+    <!-- CUSTOM FUCTIONS  -->
+     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
 
-</body>
+    <!-- <script src="assets/sidebar/sidebars.js"></script> -->
+
+     <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
+
+      <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+      <script src="asesets/dashboard/dashboard.js"></script>
+  </body>
 </html>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeneralService } from 'src/app/services/general/general.service';
+import { myConstants } from '../utils';
 
 @Component({
   selector: 'app-offres',
@@ -80,7 +81,7 @@ export class OffresComponent {
 
   async loadOffers() {
     try {
-      var result = await this.generalService.getOfferList(1, 1000, {});
+      var result = await this.generalService.getOfferList({pageNo:1, pageSize:myConstants.maxLimit}, {});
       if (result.status === 1) {
         console.log(result);
         
@@ -93,7 +94,7 @@ export class OffresComponent {
 
   async loadActivities() {
     try {
-      var result = await this.generalService.getActivityList(1, 1000, {});
+      var result = await this.generalService.getActivityList(1, myConstants.maxLimit, {});
       if (result.status === 1) {
         console.log(result);
         
@@ -103,29 +104,7 @@ export class OffresComponent {
       }
     } catch (error) {}
   }
-  // async loadRecouvreurs() {
-  //   try {
-  //     var result = await this.generalService.getRecouvreurList(0, 1000, { "userType": "collector"});
-  //     if (result.status === 1) {
-  //       this.recouvreurs = result.data.content;
-  //       console.log('recouvreurs options', this.recouvreurs);
-  //     } else {
-  //     }
-  //   } catch (error) {}
-  // }
-//load merchant
-  // async loadMerchants() {
-  //   // Load marchers from your service
 
-  //   try {
-  //     var result = await this.generalService.getMerchantList(0, 1000, {});
-  //     if (result.status === 1) {
-  //       this.merchantOptions = result.data.content;
-  //       console.log('merchants options', this.merchantOptions);
-  //     } else {
-  //     }
-  //   } catch (error) {}
-  // }
 
   async ngOnInit() {
     await this.searchOffer();
@@ -150,8 +129,8 @@ export class OffresComponent {
 
     try {
       var result = await this.generalService.getOfferList(
-        page,
-        this.itemsPerPage,
+       {pageNo: page,
+        pageSize: this.itemsPerPage},
         searchCriteria
       );
       console.log('result: ', result);
@@ -186,7 +165,19 @@ export class OffresComponent {
     }
   }
 
+  checkLimitDate(myDate: any): string {
+    const date = new Date(myDate).getTime(); // conversion en timestamp
+
+    if (date <= Date.now()) {
+      return 'EXPIRÉ';
+    } else {
+      return 'EN COURS';
+    }
+  }
+
 }
+
+
 
 export class offerStatus {
   value!: string;

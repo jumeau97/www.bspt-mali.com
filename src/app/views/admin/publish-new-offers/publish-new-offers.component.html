@@ -1,0 +1,175 @@
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"
+    >BSTP MALI</a
+  >
+  <button
+    class="navbar-toggler position-absolute d-md-none collapsed"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#sidebarMenu"
+    aria-controls="sidebarMenu"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search"> -->
+  <!-- <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="#">Sign out</a>
+    </div>
+  </div> -->
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <app-nav></app-nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <h2>Publier un Appel d'offres</h2>
+      <!-- SECTION CONTENT START -->
+      <div class="section-full p-t80 p-b50">
+        <!-- PRODUCT DETAILS -->
+        <div class="container woo-entry">
+          <!-- SECTION CONTENT START -->
+          <div class="section-content">
+            <div class="row">
+              <!-- FROM STYEL 1 -->
+              <div class="col-lg-12 col-md-12 m-b30">
+                <!-- <div class="section-head">
+                                <h2 class="text-uppercase">Billing Information</h2>
+                                <div class="wt-separator-outer">
+                                    <div class="wt-separator site-bg-primary"></div>
+                                </div>
+                            </div> -->
+
+                <div class="wt-box bdr-4 bdr-gray-light p-a30">
+                  <form [formGroup]="myformGroup" (ngSubmit)="publishOffers()">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>Titre</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Entrez le titre"
+                            formControlName="name"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>Secteur d'activité</label>
+                          <ng-select
+                            [multiple]="true"
+                            [closeOnSelect]="false"
+                            [searchable]="true"
+                            [selectableGroup]="true"
+                            placeholder="Choisir le statut"
+                            formControlName="activities"
+                            [ariaChecked]="true"
+                          >
+                            <ng-option
+                              *ngFor="let item of activities"
+                              [value]="item.slug"
+                            >
+                              {{ item.name }}
+                            </ng-option>
+                          </ng-select>
+                        </div>
+                      </div>
+                      <div *ngIf="checkRole()" class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>Entreprise(Demandeur)</label>
+                          <ng-select
+                            [closeOnSelect]="false"
+                            [searchable]="true"
+                            [selectableGroup]="false"
+                            placeholder="Choisir le statut"
+                            formControlName="idEnterprise"
+                            [ariaChecked]="true"
+                          >
+                            <ng-option
+                              *ngFor="let item of enterprises"
+                              [value]="item.id"
+                            >
+                              {{ item.name }}
+                            </ng-option>
+                          </ng-select>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label for="">Documents</label>
+                          <input
+                            type="file"
+                            class="form-control"
+                            formControlName="doc"
+                            (change)="uploadDoc($event)"
+                            accept="application/pdf"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>Date de debut</label>
+                          <input
+                            type="datetime-local"
+                            class="form-control"
+                            formControlName="startDate"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>Date de fin</label>
+                          <input
+                            type="datetime-local"
+                            class="form-control"
+                            formControlName="endDate"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div class="form-group">
+                          <label>Description</label>
+                          <textarea
+                            name=""
+                            id=""
+                            class="form-control"
+                            placeholder="Entrez la fonction du représentant de la société"
+                            rows="3"
+                          ></textarea>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div> -->
+                    <button
+                      type="submit"
+                      value="submit"
+                      class="site-button site-bg-primary"
+                    >
+                      Envoyer
+                    </button>
+                    <button
+                      type="submit"
+                      value="submit"
+                      class="site-button site-button-secondry m-3"
+                    >
+                      Annuler
+                    </button>
+                    <!-- </div> -->
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SECTION CONTENT END -->
+        </div>
+        <!-- PRODUCT DETAILS -->
+      </div>
+      <!-- CONTENT CONTENT END -->
+    </main>
+  </div>
+</div>

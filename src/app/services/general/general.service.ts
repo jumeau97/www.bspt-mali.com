@@ -12,11 +12,14 @@ export class GeneralService {
 
   constructor(private http: HttpClient) {}
 
-  async getOfferList(pageNo: number = 1, pageSize: number = 10, body: any) {
+  async getOfferList(
+    { pageNo = 1, pageSize = 10 }: { pageNo?: number; pageSize?: number },
+    body: any
+  ) {
     try {
       const response = await firstValueFrom(
         this.http.post<any>(
-          `${this.host}offer?page=${pageNo}&limit=${pageSize}`,
+          `${this.host}offer/search?page=${pageNo}&limit=${pageSize}`,
           body
         )
       );
@@ -32,7 +35,7 @@ export class GeneralService {
     try {
       const response = await firstValueFrom(
         this.http.post<any>(
-          `${this.host}activity?page=${pageNo}&limit=${pageSize}`,
+          `${this.host}activity/search?page=${pageNo}&limit=${pageSize}`,
           body
         )
       );
@@ -44,8 +47,28 @@ export class GeneralService {
     }
   }
 
-  getList(body: any) {
-    return this.http.post<any>(`${this.host}offer`, body);
+  getOffers(
+    { pageNo = 1, pageSize = 10 }: { pageNo?: number; pageSize?: number },
+    body: any
+  ) {
+    return this.http.post<any>(
+      `${this.host}offer/search?page=${pageNo}&limit=${pageSize}`,
+      body
+    );
+  }
+
+  publishOffers(body:any){
+    return this.http.post(`${this.host}offer`, body);
+  }
+
+  getEnterprises(
+    { pageNo = 1, pageSize = 10 }: { pageNo?: number; pageSize?: number },
+    body: any
+  ) {
+    return this.http.post<any>(
+      `${this.host}enterprise/search?page=${pageNo}&limit=${pageSize}`,
+      body
+    );
   }
 
   // NG SYSTEM PAYMENT
@@ -66,5 +89,36 @@ export class GeneralService {
   //Stripe pay
   stripePay(body: any) {
     return this.http.post<any>(`${this.host}stripe/pay`, body);
+  }
+
+  // ======================= ENTERPRISE ====================
+  registrationEnterprise(body: FormData) {
+    return this.http.post(`${this.host}enterprise`, body);
+  }
+
+  // ====================== ACTIVITY ==========================
+  getActivities(
+    { page = 1, limit = 10 }: { page?: number; limit?: number },
+    body: any
+  ) {
+    return this.http.post(
+      `${this.host}activity/search?page=${page}&limit=${limit}`,
+      body
+    );
+  }
+  
+
+
+  // ============================ Authentication ====================
+  login(body:any){
+    return this.http.post(`${this.host}login_check`,body)
+  }
+
+  getCurrentUser(){
+    return this.http.get(`${this.host}current-user`)
+  }
+
+  getUsers(body:any){
+    return this.http.post(`${this.host}users/search`, body)
   }
 }

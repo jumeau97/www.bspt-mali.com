@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Offcanvas } from 'bootstrap';
+import { GeneralService } from 'src/app/services/general/general.service';
 
 @Component({
   selector: 'app-nav',
@@ -249,7 +250,8 @@ export class NavComponent {
     // Ajoutez d'autres menus ici
   ];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private generalService:GeneralService) {
+    this.getcurrentUser();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.activeRoute = event.urlAfterRedirects; // capture la route après les redirections si nécessaire
@@ -277,6 +279,23 @@ export class NavComponent {
       return false;
     });
   }
+
+
+    user: any;
+   
+
+  
+    getcurrentUser(){
+      this.generalService.getCurrentUser().subscribe({
+        next:(result:any)=>{
+          console.log("result", result);
+  
+          this.user=result.user;
+          
+        },
+        error:(error:any)=>{}
+      });
+    }
 }
 // Interface MenuItem mise à jour pour inclure "open"
 interface MenuItem {

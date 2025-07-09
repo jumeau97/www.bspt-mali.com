@@ -59,10 +59,13 @@
           
         </div>
         
-        <div class="col-auto text-md-end ">
+        <div class="col-auto text-md-end" *ngIf="!user else profil">
           <a routerLink="/signin"><button type="button" class="btn btn-outline-primary me-2">Se connecter</button></a>
           <a routerLink="/devenez-membre"><button type="button" class="btn btn-primary">S'enregistrer</button></a>
         </div>
+        <ng-template #profil>
+          <a routerLink="/admin"><button type="button" class="btn btn-outline-primary me-2">Tableau de bord</button></a>
+        </ng-template>
       </div>
     </div>
   </div>

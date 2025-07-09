@@ -160,6 +160,26 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'test', component: TestComponent },
 
+
+  // ================================================================ Partners dashboard =====
+  
+
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('../app/views/admin/admin.module').then(
+        (m) => m.AdminModule
+      ),
+  },
+
+    {
+    path: 'bstp-admin',
+    loadChildren: () =>
+      import('../app/views/bstp-admin/bstp-admin.module').then(
+        (m) => m.BstpAdminModule
+      ),
+  },
+
   { path: '**', component: NotFoundComponent },
 ];
 

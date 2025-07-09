@@ -1,24 +1,80 @@
-<main class="form-signin w-100 m-auto">
-    <form>
-      <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
-      <h1 class="h3 mb-3 fw-normal">Merci de vous connecter</h1>
-  
-      <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Adresse email</label>
-      </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Mot de passe</label>
-      </div>
-  
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Se rappeller de moi
-        </label>
-      </div>
-      <button class="w-100 btn btn-lg btn-primary mb-1" type="submit">Connecter</button>
-      <a routerLink="/devenez-membre"><button class="w-100 btn btn-lg btn-outline-primary" type="submit">S'enregistrer</button></a>
-      <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p> -->
-    </form>
-  </main>
+<div class="page-wraper">
+  <app-header></app-header>
+
+  <div class="page-content">
+    <main class="form-signin w-100 m-auto">
+      <form [formGroup]="myForm" (ngSubmit)="login()">
+        <!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+        <h1 class="h3 mb-3 fw-normal">Merci de vous connecter</h1>
+
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+            formControlName="username"
+          />
+          <label for="floatingInput">Adresse email</label>
+        </div>
+        <div class="error-messages">
+          <ng-container *ngFor="let error of error_messages.username">
+            <div
+              class="error-message"
+              *ngIf="
+                myForm.get('username').hasError(error.type) &&
+                (myForm.get('username').dirty ||
+                  myForm.get('username').touched ||
+                  submitted)
+              "
+            >
+              {{ error.message }}
+            </div>
+          </ng-container>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <label for="floatingPassword">Mot de passe</label>
+        </div>
+        <div class="error-messages">
+          <ng-container *ngFor="let error of error_messages.password">
+            <div
+              class="error-message"
+              *ngIf="
+                myForm.get('password').hasError(error.type) &&
+                (myForm.get('password').dirty ||
+                  myForm.get('password').touched ||
+                  submitted)
+              "
+            >
+              {{ error.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="remember-me" /> Se rappeller de moi
+          </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary mb-1" type="submit">
+          Connecter
+        </button>
+        <a routerLink="/devenez-membre"
+          ><button class="w-100 btn btn-lg btn-outline-primary" type="submit">
+            S'enregistrer
+          </button></a
+        >
+        <!-- <p class="mt-5 mb-3 text-muted">&copy; 2017–2022</p> -->
+      </form>
+    </main>
+
+    <app-footer></app-footer>
+  </div>
+</div>
