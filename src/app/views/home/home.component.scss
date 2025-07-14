@@ -300,7 +300,7 @@ a {
   box-shadow: var(--box-shadow);
    min-height: 100%; /* Assurez-vous que la carte prend toute la hauteur */
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-between; 
 }
 
 .process-item .count {
@@ -334,6 +334,11 @@ a {
 .process-item .icon img {
   width: 40px;
   filter: brightness(0) invert(1);
+}
+
+.counter-box .icon img {
+  width: 40px;
+  filter: brightness(1) invert(1);
 }
 
 .process-item .content h4 {
