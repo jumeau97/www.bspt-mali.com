@@ -5,21 +5,12 @@
     <!-- What we Offer SECTION START -->
     <div class="section-full bg-gray p-t80 p-b57">
       <div class="container">
-        <!-- TITLE START-->
-        <!-- <div class="section-head text-center">
-                                    <h2 class="text-uppercase">OFFRES</h2>
-                                    <div class="wt-separator-outer">
-                                        <div class="wt-separator site-bg-primary"></div>
-                                    </div>                        
-                                </div> -->
-        <!-- TITLE END-->
-        <form [formGroup]="searchForm" (ngSubmit)="searchOffer()">
+      <div class="row">
+        <div class="col-lg-8 col-md-12">
+            <form [formGroup]="searchForm" (ngSubmit)="searchOffer()">
           <div class="row">
             <div class="col-md-5 col-sm-5 mb-1">
-              <ng-select
-                placeholder="Choisir le statut"
-                formControlName="offerStatus"
-              >
+              <ng-select placeholder="Choisir le statut">
                 <ng-option
                   *ngFor="let status of offerStaus"
                   [value]="status.value"
@@ -30,10 +21,7 @@
             </div>
 
             <div class="col-md-5 col-sm-5 mb-1">
-              <ng-select
-                placeholder="Choisir l'activité"
-                formControlName="activityId"
-              >
+              <ng-select placeholder="Choisir l'activité">
                 <ng-option
                   *ngFor="let activity of activities"
                   [value]="activity.id"
@@ -55,11 +43,9 @@
             </div>
           </div>
         </form>
-      </div>
-      <div class="container">
         <div class="section-content">
           <div class="row">
-            <div class="col-lg-6 col-md-6" *ngFor="let o of offers">
+            <div class="col-lg-12 col-md-12" *ngFor="let o of offers">
               <div
                 class="wt-box block-md clearfix bg-white m-b30 radius-md overflow-hide"
               >
@@ -96,8 +82,25 @@
                     </div>
                   </div>
                   <div class="m-t10">
-                    <span class="h6" style="font-style: italic; font-weight: bold; font-family: 'Times New Roman', serif;">{{ o.startDate | date : "dd/MM/YYYY HH:mm" }}</span> -
-                    <span class="h6" style="font-style: italic; font-weight: bold; font-family: 'Times New Roman', serif;" >{{ o.endDate | date : "dd/MM/YYYY HH:mm" }}</span>
+                    <span
+                      class="h6"
+                      style="
+                        font-style: italic;
+                        font-weight: bold;
+                        font-family: 'Times New Roman', serif;
+                      "
+                      >{{ o.startDate | date : "dd/MM/YYYY HH:mm" }}</span
+                    >
+                    -
+                    <span
+                      class="h6"
+                      style="
+                        font-style: italic;
+                        font-weight: bold;
+                        font-family: 'Times New Roman', serif;
+                      "
+                      >{{ o.endDate | date : "dd/MM/YYYY HH:mm" }}</span
+                    >
                   </div>
 
                   <a
@@ -175,29 +178,61 @@
         </div> -->
           </div>
           <!-- PAGINATION START -->
-          <div class="pagination-bx clearfix align-content-center">
+          <div class="pagination-bx clearfix d-flex justify-content-center">
             <ul class="custom-pagination pagination-1">
-              <li
-                [ngClass]="{ disabled: currentPage === 1 }"
-                (click)="prevPage()"
-              >
-                <a>&laquo;</a>
+              <!-- Bouton précédent -->
+              <li class="pagination-item" [class.disabled]="currentPage === 1">
+                <a (click)="prevPage()" [class.disabled]="currentPage === 1"
+                  >&laquo;</a
+                >
               </li>
-              <!-- <li class="active"><a href="#">1</a></li>
-          <li><a href="#">2</a></li> -->
-              <span class="m-2"
-                >Page {{ currentPage }} sur {{ totalPages }}</span
-              >
+
+              <!-- Affichage texte de la page actuelle -->
+              <li class="disabled pagination-middle">
+                <span>Page {{ currentPage }} sur {{ totalPages }}</span>
+              </li>
+
+              <!-- Bouton suivant -->
               <li
-                [ngClass]="{ disabled: currentPage === totalPages }"
-                (click)="nextPage()"
+                class="pagination-item"
+                [class.disabled]="currentPage === totalPages"
               >
-                <a>&raquo;</a>
+                <a
+                  (click)="nextPage()"
+                  [class.disabled]="currentPage === totalPages"
+                  >&raquo;</a
+                >
               </li>
             </ul>
           </div>
+
           <!-- PAGINATION END -->
         </div>
+        </div>
+        <div class="col-lg-4 col-md-12 rightSidebar p-t80 p-b57">
+           <aside class="side-bar">
+              <!-- 4. POST CATEGORIES  -->
+              <div class="widget widget_categories">
+                <ul class="bg-white p-a20 radius-md">
+                  <img src="assets/images/our-work/news.jpg" alt="">
+                </ul>
+              </div>
+
+                 <div class="widget widget_categories">
+                <ul class="bg-white p-a20 radius-md">
+                  <img src="assets/images/our-work/annonce.jpg" alt="">
+                </ul>
+              </div>
+
+                    <div class="widget widget_categories">
+                <ul class="bg-white p-a20 radius-md">
+                  <img src="assets/images/our-work/pub1.jpg" alt="">
+                </ul>
+              </div>
+
+            </aside>
+        </div>
+      </div>
       </div>
     </div>
     <!-- What we Offer SECTION END -->

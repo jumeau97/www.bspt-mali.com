@@ -118,7 +118,8 @@ export class GeneralService {
     return this.http.get(`${this.host}current-user`)
   }
 
-  getUsers(body:any){
-    return this.http.post(`${this.host}users/search`, body)
+  getUsers(  { page = 1, limit = 10 }: { page?: number; limit?: number },
+    body: any){
+    return this.http.post(`${this.host}users/search?page=${page}&limit=${limit}`, body)
   }
 }

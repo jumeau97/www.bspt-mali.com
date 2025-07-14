@@ -15,6 +15,8 @@ import { NavComponent } from './nav/nav.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { EnterprisesPartnersComponent } from './enterprises-partners/enterprises-partners.component';
+import { ToastModule } from 'primeng/toast';
+import {ConfirmDialogModule } from 'primeng/confirmdialog';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { EnterprisesPartnersComponent } from './enterprises-partners/enterprises
     ProfileComponent,
     ActivitiesComponent,
     EnterprisesPartnersComponent,
+
   ],
-  imports: [CommonModule, AdminRoutingModule, NgSelectModule, ReactiveFormsModule],
+  imports: [CommonModule, AdminRoutingModule, NgSelectModule, ReactiveFormsModule, 
+    ToastModule, ConfirmDialogModule],
 })
 export class AdminModule {}

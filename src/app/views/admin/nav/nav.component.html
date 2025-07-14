@@ -1,3 +1,8 @@
+  <div class="card flex justify-content-center gap-2">
+    <p-toast />
+    <p-confirmDialog />
+
+</div>
 <nav
   id="sidebarMenu"
   class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
@@ -30,7 +35,7 @@
     <div>
         <ul class="nav flex-column mb-2">
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <a class="nav-link disconnect"  (click)="disconnect($event)">
             <span data-feather="file-text" class="align-text-bottom"></span>
             Déconnexion
           </a>

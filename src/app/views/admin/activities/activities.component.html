@@ -104,23 +104,42 @@
                     </tr>
                   </thead>
                   <tbody>
-                  <tr *ngFor="let item of activities">
-                    <td>{{item.name}}</td>
-                    <td>{{item.description}}</td>
-                  </tr>
+                    <tr *ngFor="let item of activities">
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.description }}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
               <!-- PAGINATION START -->
               <div class="pagination-bx clearfix d-flex justify-content-center">
                 <ul class="custom-pagination pagination-1">
-                  <li><a href="#">&laquo;</a></li>
-                  <li class="active"><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">&raquo;</a></li>
+                  <!-- Bouton précédent -->
+                  <li
+                    class="pagination-item"
+                    [class.disabled]="currentPage === 1"
+                  >
+                    <a (click)="prevPage()" [class.disabled]="currentPage === 1"
+                      >&laquo;</a
+                    >
+                  </li>
+
+                  <!-- Affichage texte de la page actuelle -->
+                  <li class="disabled pagination-middle">
+                    <span>Page {{ currentPage }} sur {{ totalPages }}</span>
+                  </li>
+
+                  <!-- Bouton suivant -->
+                  <li
+                    class="pagination-item"
+                    [class.disabled]="currentPage === totalPages"
+                  >
+                    <a
+                      (click)="nextPage()"
+                      [class.disabled]="currentPage === totalPages"
+                      >&raquo;</a
+                    >
+                  </li>
                 </ul>
               </div>
               <!-- PAGINATION END -->

@@ -10,6 +10,7 @@ import { GeneralService } from 'src/app/services/general/general.service';
 })
 export class NavComponent {
   navbarFixed: boolean = false;
+  user: any;
   // Listen for the window scroll event
   @HostListener('window:scroll', [])
   onWindowScroll() {
@@ -143,7 +144,7 @@ export class NavComponent {
     //   ],
     // },
 
-      {
+    {
       title: 'Demandes',
       link: 'javascript:void(0)',
       open: false,
@@ -153,7 +154,6 @@ export class NavComponent {
         { title: 'Partenariat', link: '/partenariat' },
       ],
     },
-
 
     // {
     //   title: 'DEMANDES & ADHESION',
@@ -250,7 +250,7 @@ export class NavComponent {
     // Ajoutez d'autres menus ici
   ];
 
-  constructor(private router: Router, private generalService:GeneralService) {
+  constructor(private router: Router, private generalService: GeneralService) {
     this.getcurrentUser();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -280,22 +280,16 @@ export class NavComponent {
     });
   }
 
+  getcurrentUser() {
+    this.generalService.getCurrentUser().subscribe({
+      next: (result: any) => {
+        console.log('result', result);
 
-    user: any;
-   
-
-  
-    getcurrentUser(){
-      this.generalService.getCurrentUser().subscribe({
-        next:(result:any)=>{
-          console.log("result", result);
-  
-          this.user=result.user;
-          
-        },
-        error:(error:any)=>{}
-      });
-    }
+        this.user = result.user;
+      },
+      error: (error: any) => {},
+    });
+  }
 }
 // Interface MenuItem mise à jour pour inclure "open"
 interface MenuItem {

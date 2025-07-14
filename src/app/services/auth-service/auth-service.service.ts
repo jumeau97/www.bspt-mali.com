@@ -11,7 +11,10 @@ export class AuthServiceService {
   constructor() {}
 
   isAuthenticatedUser() {
+    this.token = null;
     let storeData = sessionStorage.getItem('bstp-agent');
+    console.log("session storage", storeData);
+    
 
     if (storeData) {
       const decryptedBytes = CryptoJS.AES.decrypt(

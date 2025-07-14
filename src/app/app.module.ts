@@ -153,7 +153,7 @@ import { BstpInterceptor } from './Auth/bstp-interceptor/bstp.interceptor';
 // import { TerminalModule } from 'primeng/terminal';
 // import { TieredMenuModule } from 'primeng/tieredmenu';
 // import { TimelineModule } from 'primeng/timeline';
-// import { ToastModule } from 'primeng/toast';
+import { ToastModule } from 'primeng/toast';
 // import { ToggleButtonModule } from 'primeng/togglebutton';
 // import { ToolbarModule } from 'primeng/toolbar';
 // import { TooltipModule } from 'primeng/tooltip';
@@ -321,7 +321,7 @@ import { BstpInterceptor } from './Auth/bstp-interceptor/bstp.interceptor';
     //  TerminalModule,
     //  TieredMenuModule,
     //  TimelineModule,
-    //  ToastModule,
+     ToastModule,
     //  ToggleButtonModule,
     //  ToolbarModule,
     //  TooltipModule,
