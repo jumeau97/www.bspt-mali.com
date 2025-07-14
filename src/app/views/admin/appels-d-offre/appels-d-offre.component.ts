@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { GeneralService } from 'src/app/services/general/general.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-appels-d-offre',
@@ -16,6 +17,8 @@ export class AppelsDOffreComponent {
   totalItems: number = 0;
   totalPages: number = 0;
   searchForm!: FormGroup;
+
+  imageBaseUrl: string = environment.imagehost;
 
   constructor(private generalService: GeneralService, private fb: FormBuilder) {
     this.getcurrentUser();

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeneralService } from 'src/app/services/general/general.service';
 import { myConstants } from '../utils';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-offres',
@@ -28,6 +29,7 @@ export class OffresComponent {
   activities: any[] = []; // Populate this with your marchers data
   offers: any[] = []; // Populate this with your marchers data
   user: any;
+  imageBaseUrl: string = environment.imagehost;
 
   offerStaus: offerStatus[] = [
     {
