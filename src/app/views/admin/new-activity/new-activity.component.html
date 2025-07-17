@@ -1,0 +1,130 @@
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"
+    >BSTP MALI</a
+  >
+  <button
+    class="navbar-toggler position-absolute d-md-none collapsed"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#sidebarMenu"
+    aria-controls="sidebarMenu"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <app-nav></app-nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <h2>Publier un Appel d'offres</h2>
+      <!-- SECTION CONTENT START -->
+      <div class="section-full p-t80 p-b50">
+        <!-- PRODUCT DETAILS -->
+        <div class="container woo-entry">
+          <!-- SECTION CONTENT START -->
+          <div class="section-content">
+            <div class="row">
+              <!-- FROM STYEL 1 -->
+              <div class="col-lg-12 col-md-12 m-b30">
+                <!-- <div class="section-head">
+                                <h2 class="text-uppercase">Billing Information</h2>
+                                <div class="wt-separator-outer">
+                                    <div class="wt-separator site-bg-primary"></div>
+                                </div>
+                            </div> -->
+
+                <div class="wt-box bdr-4 bdr-gray-light p-a30">
+                  <form [formGroup]="myForm" (ngSubmit)="addNewActivity()">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>Titre</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Entrez le nom"
+                            formControlName="name"
+                          />
+                          <div class="error-messages">
+                            <ng-container
+                              *ngFor="let error of error_messages.name"
+                            >
+                              <div
+                                class="error-message"
+                                *ngIf="
+                                  myForm.get('name').hasError(error.type) &&
+                                  (myForm.get('name').dirty ||
+                                    myForm.get('name').touched ||
+                                    submitted)
+                                "
+                              >
+                                {{ error.message }}
+                              </div>
+                            </ng-container>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>Description</label>
+                          <textarea
+                            formControlName="description"
+                            class="form-control"
+                            rows="5"
+                          ></textarea>
+                          <div class="error-messages">
+                            <ng-container
+                              *ngFor="let error of error_messages.description"
+                            >
+                              <div
+                                class="error-message"
+                                *ngIf="
+                                  myForm
+                                    .get('description')
+                                    .hasError(error.type) &&
+                                  (myForm.get('description').dirty ||
+                                    myForm.get('description').touched ||
+                                    submitted)
+                                "
+                              >
+                                {{ error.message }}
+                              </div>
+                            </ng-container>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div> -->
+                    <button
+                      type="submit"
+                      value="submit"
+                      class="site-button site-bg-primary"
+                    >
+                      Enregistrer
+                    </button>
+                    <button
+                      type="submit"
+                      value="submit"
+                      class="site-button site-button-secondry m-3"
+                    >
+                      Annuler
+                    </button>
+                    <!-- </div> -->
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SECTION CONTENT END -->
+        </div>
+        <!-- PRODUCT DETAILS -->
+      </div>
+      <!-- CONTENT CONTENT END -->
+    </main>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { GeneralService } from 'src/app/services/general/general.service';
 import { environment } from 'src/environments/environment';
 
@@ -13,14 +14,18 @@ export class AppelsDOffreComponent {
   user: any;
 
   currentPage: number = 1;
-  itemsPerPage: number = 3;
+  itemsPerPage: number = 10;
   totalItems: number = 0;
   totalPages: number = 0;
   searchForm!: FormGroup;
 
   imageBaseUrl: string = environment.imagehost;
 
-  constructor(private generalService: GeneralService, private fb: FormBuilder) {
+  constructor(
+    private generalService: GeneralService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.getcurrentUser();
 
     this.searchForm = this.fb.group({
@@ -28,6 +33,17 @@ export class AppelsDOffreComponent {
     });
   }
   ngOnInit(): void {}
+
+  gotDetails(item: any) {
+    const filterString = JSON.stringify(item);
+    // Base64 encode
+    const encodedFilter = btoa(filterString);
+    console.log('Base64 Encoded filter:', encodedFilter);
+
+    this.router.navigate(['/admin/appels-d-offres/details', encodedFilter], {
+      // queryParams: { filter: encodedFilter },
+    });
+  }
 
   checkLimitDate(myDate: any): string {
     const date = new Date(myDate).getTime(); // conversion en timestamp

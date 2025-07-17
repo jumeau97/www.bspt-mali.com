@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeneralService } from 'src/app/services/general/general.service';
 
 @Component({
@@ -19,7 +19,8 @@ export class EnterprisesPartnersComponent {
 
   constructor(private generalService: GeneralService, private fb: FormBuilder) {
     this.getcurrentUser();
-    this.searchForm = fb.group({});
+    this.searchForm = fb.group({
+    });
   }
   ngOnInit(): void {}
 

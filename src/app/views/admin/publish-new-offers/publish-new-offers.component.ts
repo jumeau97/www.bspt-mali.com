@@ -12,12 +12,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PublishNewOffersComponent implements OnInit {
   selectedMethod: string | null = null;
   messages: Message[] | null = null;
-  myformGroup!: FormGroup;
+  myformGroup!: FormGroup|any;
   submitted: boolean = false;
   image!: File;
   activities: any[] = [];
   user: any;
   enterprises: any;
+  images!: File[];
 
   constructor(private generalService: GeneralService, private fb: FormBuilder) {
     this.getActivities();
@@ -25,11 +26,11 @@ export class PublishNewOffersComponent implements OnInit {
 
     this.myformGroup = this.fb.group({
       name: ['', Validators.required],
-      description: [''],
-      startDate: [''],
-      endDate: [''],
-      activities: [''],
-      idEnterprise: [],
+      description: ['', [Validators.required]],
+      startDate: ['', [Validators.required]],
+      endDate: ['', [Validators.required]],
+      activities: [,[Validators.required]],
+      idEnterprise: [, [Validators.required]],
       doc: [],
       status: ['WAITING'],
     });
@@ -76,8 +77,8 @@ export class PublishNewOffersComponent implements OnInit {
     console.log('file', event.target);
 
     if (event.target.files) {
-      this.image = event.target.files[0];
-      console.log('test image ', this.image.name);
+      this.images = event.target.files;
+      // console.log('test image ', this.image.name);
     }
   }
 
@@ -99,18 +100,26 @@ export class PublishNewOffersComponent implements OnInit {
       const json = JSON.stringify(body.eventRequest);
       console.log('json', json);
 
-      const blob = new Blob([json], {
-        type: 'application/json',
-      });
+      // const blob = new Blob([json], {
+      //   type: 'application/json',
+      // });
 
       formData.append('data', json);
-      formData.append('file', this.image);
+
+
+     for (let index = 0; index < this.images.length; index++) {
+      let element = this.images[index];
+       formData.append('files[]', element);
+      
+     }
 
       this.generalService.publishOffers(formData).subscribe({
         next: (result: any) => {
           console.log('result', result);
         },
-        error: (error: any) => {},
+        error: (error: any) => {
+           console.log('error', error);
+        },
       });
     }
   }
@@ -118,10 +127,10 @@ export class PublishNewOffersComponent implements OnInit {
   checkRole() {
     console.log(
       'role status',
-      this.user?.roles.find((role: any) => role)
+      this.user?.roles.includes('ROLE_ADMIN')
     );
 
-    return this.user?.roles.find((role: any) => role);
+    return this.user?.roles.includes('ROLE_ADMIN')
   }
 
   getcurrentUser() {
@@ -131,7 +140,7 @@ export class PublishNewOffersComponent implements OnInit {
         // recuprer la liste de toutes les entreprises 
         this.getEnterprises();
         this.user = result.user;
-        if (this.checkRole()) {
+        if (!this.checkRole()) {
           this.myformGroup
             .get('idEnterprise')
             ?.setValue(result.user.enterprise?.id);

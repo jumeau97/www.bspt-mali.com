@@ -166,6 +166,7 @@ import { ToastModule } from 'primeng/toast';
 // import { BlockUIModule } from 'primeng/blockui';
 // import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -321,7 +322,7 @@ import { ToastModule } from 'primeng/toast';
     //  TerminalModule,
     //  TieredMenuModule,
     //  TimelineModule,
-     ToastModule,
+    ToastModule,
     //  ToggleButtonModule,
     //  ToolbarModule,
     //  TooltipModule,
@@ -334,7 +335,7 @@ import { ToastModule } from 'primeng/toast';
   ],
   providers: [
     { provide: HashLocationStrategy, useClass: PathLocationStrategy },
-      {
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: BstpInterceptor,
       multi: true,

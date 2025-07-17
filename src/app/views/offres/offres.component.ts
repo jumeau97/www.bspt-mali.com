@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-offres',
   templateUrl: './offres.component.html',
-  styleUrls: ['./offres.component.scss']
+  styleUrls: ['./offres.component.scss'],
 })
 export class OffresComponent {
   buttonSpinner: boolean = false;
@@ -105,7 +105,13 @@ export class OffresComponent {
     this.tableDataLoading = true;
     const searchCriteria = {
       ...this.searchForm.value,
-      enterpriseId: this.user ? this.user.enterprise.id : null,
+      activities: this.user
+        ? this.user.enterprise
+          ? this.user.enterprise.activities.map(
+              (activity: any) => activity.slug
+            )
+          : null
+        : null,
     };
 
     console.log('searchoffer offer', searchCriteria);
@@ -153,7 +159,7 @@ export class OffresComponent {
       complete: () => {
         console.log('complete user', this.user);
         this.searchOffer();
-      }
+      },
     });
   }
 
@@ -171,8 +177,7 @@ export class OffresComponent {
 
   checkLimitDate(myDate: any): string {
     const date = new Date(myDate).getTime(); // conversion en timestamp
-
-    if (date <= Date.now()) {
+    if (date < Date.now()) {
       return 'EXPIRÉ';
     } else {
       return 'EN COURS';

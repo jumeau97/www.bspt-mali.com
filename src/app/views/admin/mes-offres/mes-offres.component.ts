@@ -12,7 +12,7 @@ export class MesOffresComponent implements OnInit {
   user: any;
 
   currentPage: number = 1;
-  itemsPerPage: number = 3;
+  itemsPerPage: number = 5;
   totalItems: number = 0;
   totalPages: number = 0;
   searchForm!: FormGroup;
@@ -29,7 +29,7 @@ export class MesOffresComponent implements OnInit {
     const searchCriteria = {
       ...this.searchForm.value,
       enterpriseId:
-        this.user.enterprise != null ? this.user.enterprise.id : null,
+        this.user != null ? this.user.enterprise.id : null,
     };
     {
     }

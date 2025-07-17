@@ -106,6 +106,10 @@ export class GeneralService {
       body
     );
   }
+
+  addNewActivity(body:any){
+    return this.http.post(`${this.host}activity`, body)
+  }
   
 
 
@@ -121,5 +125,9 @@ export class GeneralService {
   getUsers(  { page = 1, limit = 10 }: { page?: number; limit?: number },
     body: any){
     return this.http.post(`${this.host}users/search?page=${page}&limit=${limit}`, body)
+  }
+
+  addNewUser(body:any){
+    return this.http.post(`${this.host}register`, body)
   }
 }

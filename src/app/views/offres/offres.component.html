@@ -5,113 +5,123 @@
     <!-- What we Offer SECTION START -->
     <div class="section-full bg-gray p-t80 p-b57">
       <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-12">
+        <div class="row">
+          <div class="col-lg-8 col-md-12">
             <form [formGroup]="searchForm" (ngSubmit)="searchOffer()">
-          <div class="row">
-            <div class="col-md-5 col-sm-5 mb-1">
-              <ng-select placeholder="Choisir le statut">
-                <ng-option
-                  *ngFor="let status of offerStaus"
-                  [value]="status.value"
-                >
-                  {{ status.label }}
-                </ng-option>
-              </ng-select>
-            </div>
-
-            <div class="col-md-5 col-sm-5 mb-1">
-              <ng-select placeholder="Choisir l'activité">
-                <ng-option
-                  *ngFor="let activity of activities"
-                  [value]="activity.id"
-                >
-                  {{ activity.name }}
-                </ng-option>
-              </ng-select>
-            </div>
-            <div class="col-md-2 col-sm-2">
-              <div class="form-group">
-                <button
-                  type="submit"
-                  value="submit"
-                  class="site-button btn-block"
-                >
-                  Rechercher
-                </button>
-              </div>
-            </div>
-          </div>
-        </form>
-        <div class="section-content">
-          <div class="row">
-            <div class="col-lg-12 col-md-12" *ngFor="let o of offers">
-              <div
-                class="wt-box block-md clearfix bg-white m-b30 radius-md overflow-hide"
-              >
-                <div class="wt-media">
-                  <img
-                    src="{{imageBaseUrl}}images/logoFiles/{{
-                      o.enterprise.logoName
-                    }}"
-                    alt=""
-                  />
+              <div class="row">
+                <div class="col-md-5 col-sm-5 mb-1">
+                  <ng-select placeholder="Choisir le statut">
+                    <ng-option
+                      *ngFor="let status of offerStaus"
+                      [value]="status.value"
+                    >
+                      {{ status.label }}
+                    </ng-option>
+                  </ng-select>
                 </div>
-                <div class="wt-info text-left p-a20 overflow-hide">
-                  <h6 class="text-uppercase">{{ o.name }}</h6>
-                  <span
-                    [ngClass]="{
-                      'text-bg-danger': checkLimitDate(o.endDate) == 'EXPIRÉ',
-                      'text-bg-primary': checkLimitDate(o.endDate) == 'EN COURS'
-                    }"
-                    class="badge"
-                    >{{ checkLimitDate(o.endDate) }}</span
-                  >
 
-                  <div>
-                    {{ o.name | textTruncate : 100 }}
-                    <div>
-                      <span class="badge text-bg-secondary mx-1">{{
-                        o?.activity?.name
-                      }}</span>
+                <div class="col-md-5 col-sm-5 mb-1">
+                  <ng-select placeholder="Choisir l'activité">
+                    <ng-option
+                      *ngFor="let activity of activities"
+                      [value]="activity.id"
+                    >
+                      {{ activity.name }}
+                    </ng-option>
+                  </ng-select>
+                </div>
+                <div class="col-md-2 col-sm-2">
+                  <div class="form-group">
+                    <button
+                      type="submit"
+                      value="submit"
+                      class="site-button btn-block"
+                    >
+                      Rechercher
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="section-content">
+              <div class="row">
+                <div class="col-lg-12 col-md-12" *ngFor="let o of offers">
+                  <div
+                    class="wt-box block-md clearfix bg-white m-b30 radius-md overflow-hide"
+                  >
+                    <div class="wt-media">
+                      <img
+                        src="{{ imageBaseUrl }}images/logoFiles/{{
+                          o.enterprise.logoName
+                        }}"
+                        alt=""
+                      />
+                    </div>
+                    <div class="wt-info text-left p-a20 overflow-hide">
+                      <h6 class="text-uppercase">{{ o.name }}</h6>
                       <span
-                        *ngFor="let activity of o.activities"
-                        class="badge rounded-pill text-bg-primary m-r10"
-                        >{{ activity.name }}</span
+                        [ngClass]="{
+                          'text-bg-danger':
+                            checkLimitDate(o.endDate) == 'EXPIRÉ',
+                          'text-bg-primary':
+                            checkLimitDate(o.endDate) == 'EN COURS'
+                        }"
+                        class="badge"
+                        >{{ checkLimitDate(o.endDate) }}</span
                       >
+
+                      <div>
+                        {{ o.name | textTruncate : 100 }}
+                        <div>
+                          <span class="badge text-bg-secondary mx-1">{{
+                            o?.activity?.name
+                          }}</span>
+                          <span
+                            *ngFor="let activity of o.activities"
+                            class="badge rounded-pill text-bg-primary m-r10"
+                            >{{ activity.name }}</span
+                          >
+                        </div>
+                      </div>
+                      <div class="m-t10">
+                        <span
+                          class="h6"
+                          style="
+                            font-style: italic;
+                            font-weight: bold;
+                            font-family: 'Times New Roman', serif;
+                          "
+                          >{{ o.startDate | date : "dd/MM/YYYY HH:mm" }}</span
+                        >
+                        -
+                        <span
+                          class="h6"
+                          style="
+                            font-style: italic;
+                            font-weight: bold;
+                            font-family: 'Times New Roman', serif;
+                          "
+                          >{{ o.endDate | date : "dd/MM/YYYY HH:mm" }}</span
+                        >
+                      </div>
+
+                      <a
+                        *ngIf="!user; else connected"
+                        [routerLink]="['/signin']"
+                        class="site-text-primary font-weight-600"
+                        >VOIR DETAIL</a
+                      >
+                      <ng-template #connected>
+                        <a
+                          [routerLink]="['/offer-details', o.id]"
+                          class="site-text-primary font-weight-600"
+                          >VOIR DETAIL</a
+                        >
+                      </ng-template>
                     </div>
                   </div>
-                  <div class="m-t10">
-                    <span
-                      class="h6"
-                      style="
-                        font-style: italic;
-                        font-weight: bold;
-                        font-family: 'Times New Roman', serif;
-                      "
-                      >{{ o.startDate | date : "dd/MM/YYYY HH:mm" }}</span
-                    >
-                    -
-                    <span
-                      class="h6"
-                      style="
-                        font-style: italic;
-                        font-weight: bold;
-                        font-family: 'Times New Roman', serif;
-                      "
-                      >{{ o.endDate | date : "dd/MM/YYYY HH:mm" }}</span
-                    >
-                  </div>
-
-                  <a
-                    [routerLink]="['/offer-details', o.id]"
-                    class="site-text-primary font-weight-600"
-                    >VOIR DETAIL</a
-                  >
                 </div>
-              </div>
-            </div>
-            <!-- <div class="col-lg-6 col-md-6">
+                <!-- <div class="col-lg-6 col-md-6">
           <div
             class="wt-box block-md clearfix bg-white m-b30 radius-md overflow-hide"
           >
@@ -133,7 +143,7 @@
           </div>
         </div> -->
 
-            <!-- <div class="col-lg-6 col-md-6">
+                <!-- <div class="col-lg-6 col-md-6">
           <div
             class="wt-box block-md clearfix bg-white m-b30 radius-md overflow-hide"
           >
@@ -176,63 +186,65 @@
             </div>
           </div>
         </div> -->
+              </div>
+              <!-- PAGINATION START -->
+              <div class="pagination-bx clearfix d-flex justify-content-center">
+                <ul class="custom-pagination pagination-1">
+                  <!-- Bouton précédent -->
+                  <li
+                    class="pagination-item"
+                    [class.disabled]="currentPage === 1"
+                  >
+                    <a (click)="prevPage()" [class.disabled]="currentPage === 1"
+                      >&laquo;</a
+                    >
+                  </li>
+
+                  <!-- Affichage texte de la page actuelle -->
+                  <li class="disabled pagination-middle">
+                    <span>Page {{ currentPage }} sur {{ totalPages }}</span>
+                  </li>
+
+                  <!-- Bouton suivant -->
+                  <li
+                    class="pagination-item"
+                    [class.disabled]="currentPage === totalPages"
+                  >
+                    <a
+                      (click)="nextPage()"
+                      [class.disabled]="currentPage === totalPages"
+                      >&raquo;</a
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <!-- PAGINATION END -->
+            </div>
           </div>
-          <!-- PAGINATION START -->
-          <div class="pagination-bx clearfix d-flex justify-content-center">
-            <ul class="custom-pagination pagination-1">
-              <!-- Bouton précédent -->
-              <li class="pagination-item" [class.disabled]="currentPage === 1">
-                <a (click)="prevPage()" [class.disabled]="currentPage === 1"
-                  >&laquo;</a
-                >
-              </li>
-
-              <!-- Affichage texte de la page actuelle -->
-              <li class="disabled pagination-middle">
-                <span>Page {{ currentPage }} sur {{ totalPages }}</span>
-              </li>
-
-              <!-- Bouton suivant -->
-              <li
-                class="pagination-item"
-                [class.disabled]="currentPage === totalPages"
-              >
-                <a
-                  (click)="nextPage()"
-                  [class.disabled]="currentPage === totalPages"
-                  >&raquo;</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <!-- PAGINATION END -->
-        </div>
-        </div>
-        <div class="col-lg-4 col-md-12 rightSidebar p-t80 p-b57">
-           <aside class="side-bar">
+          <div class="col-lg-4 col-md-12 rightSidebar p-t80 p-b57">
+            <aside class="side-bar">
               <!-- 4. POST CATEGORIES  -->
               <div class="widget widget_categories">
                 <ul class="bg-white p-a20 radius-md">
-                  <img src="assets/images/our-work/news.jpg" alt="">
+                  <img src="assets/images/our-work/news.jpg" alt="" />
                 </ul>
               </div>
 
-                 <div class="widget widget_categories">
+              <div class="widget widget_categories">
                 <ul class="bg-white p-a20 radius-md">
-                  <img src="assets/images/our-work/annonce.jpg" alt="">
+                  <img src="assets/images/our-work/annonce.jpg" alt="" />
                 </ul>
               </div>
 
-                    <div class="widget widget_categories">
+              <div class="widget widget_categories">
                 <ul class="bg-white p-a20 radius-md">
-                  <img src="assets/images/our-work/pub1.jpg" alt="">
+                  <img src="assets/images/our-work/pub1.jpg" alt="" />
                 </ul>
               </div>
-
             </aside>
+          </div>
         </div>
-      </div>
       </div>
     </div>
     <!-- What we Offer SECTION END -->

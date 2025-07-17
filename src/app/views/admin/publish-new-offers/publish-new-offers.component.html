@@ -55,6 +55,21 @@
                             placeholder="Entrez le titre"
                             formControlName="name"
                           />
+                          <ng-container
+                            *ngFor="let error of error_messages.name"
+                          >
+                            <div
+                              class="error-message"
+                              *ngIf="
+                                myformGroup.get('name').hasError(error.type) &&
+                                (myformGroup.get('name').dirty ||
+                                  myformGroup.get('name').touched ||
+                                  submitted)
+                              "
+                            >
+                              {{ error.message }}
+                            </div>
+                          </ng-container>
                         </div>
                       </div>
                       <div class="col-md-6 col-sm-6">
@@ -67,7 +82,6 @@
                             [selectableGroup]="true"
                             placeholder="Choisir le statut"
                             formControlName="activities"
-                            [ariaChecked]="true"
                           >
                             <ng-option
                               *ngFor="let item of activities"
@@ -76,6 +90,60 @@
                               {{ item.name }}
                             </ng-option>
                           </ng-select>
+                          <ng-container
+                            *ngFor="let error of error_messages.activities"
+                          >
+                            <div
+                              class="error-message"
+                              *ngIf="
+                                myformGroup
+                                  .get('activities')
+                                  .hasError(error.type) &&
+                                (myformGroup.get('activities').dirty ||
+                                  myformGroup.get('activities').touched ||
+                                  submitted)
+                              "
+                            >
+                              {{ error.message }}
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>Date de debut</label>
+                          <input
+                            type="datetime-local"
+                            class="form-control"
+                            formControlName="startDate"
+                          />
+                               <ng-container
+                            *ngFor="let error of error_messages.startDate"
+                          >
+                            <div
+                              class="error-message"
+                              *ngIf="
+                                myformGroup
+                                  .get('startDate')
+                                  .hasError(error.type) &&
+                                (myformGroup.get('startDate').dirty ||
+                                  myformGroup.get('startDate').touched ||
+                                  submitted)
+                              "
+                            >
+                              {{ error.message }}
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>Date de fin</label>
+                          <input
+                            type="datetime-local"
+                            class="form-control"
+                            formControlName="endDate"
+                          />
                         </div>
                       </div>
                       <div *ngIf="checkRole()" class="col-md-6 col-sm-6">
@@ -100,37 +168,19 @@
                       </div>
                       <div class="col-md-6 col-sm-6">
                         <div class="form-group">
-                          <label for="">Documents</label>
+                          <label for="">Documents <span class="error-message">(Optionnel)</span></label>
                           <input
                             type="file"
                             class="form-control"
+                            [multiple]="true"
+                            name="files[]"
                             formControlName="doc"
                             (change)="uploadDoc($event)"
                             accept="application/pdf"
                           />
                         </div>
                       </div>
-                      <div class="col-md-6 col-sm-6">
-                        <div class="form-group">
-                          <label>Date de debut</label>
-                          <input
-                            type="datetime-local"
-                            class="form-control"
-                            formControlName="startDate"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-md-6 col-sm-6">
-                        <div class="form-group">
-                          <label>Date de fin</label>
-                          <input
-                            type="datetime-local"
-                            class="form-control"
-                            formControlName="endDate"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-md-8">
+                      <!-- <div class="col-md-6">
                         <div class="form-group">
                           <label>Description</label>
                           <textarea
@@ -140,6 +190,33 @@
                             placeholder="Entrez la fonction du représentant de la société"
                             rows="3"
                           ></textarea>
+                        </div>
+                      </div> -->
+                      <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                          <quill-editor
+                            formControlName="description"
+                            placeholder="Description"
+                          >
+                          </quill-editor>
+                             <ng-container
+                            *ngFor="let error of error_messages.description"
+                          >
+                            <div
+                              class="error-message"
+                              *ngIf="
+                                myformGroup
+                                  .get('description')
+                                  .hasError(error.type) &&
+                                (myformGroup.get('description').dirty ||
+                                  myformGroup.get('description').touched ||
+                                  submitted)
+                              "
+                            >
+                              {{ error.message }}
+                            </div>
+                          </ng-container>
+                          {{ myformGroup.value | json }}
                         </div>
                       </div>
                     </div>

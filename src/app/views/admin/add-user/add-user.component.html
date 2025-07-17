@@ -1,0 +1,161 @@
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#"
+    >BSTP MALI</a
+  >
+  <button
+    class="navbar-toggler position-absolute d-md-none collapsed"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#sidebarMenu"
+    aria-controls="sidebarMenu"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- <input class="form-control form-control-dark w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search"> -->
+  <!-- <div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+      <a class="nav-link px-3" href="#">Sign out</a>
+    </div>
+  </div> -->
+</header>
+
+<div class="container-fluid">
+  <div class="row">
+    <app-nav></app-nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <h2>Publier un Appel d'offres</h2>
+      <!-- SECTION CONTENT START -->
+      <div class="section-full p-t80 p-b50">
+        <!-- PRODUCT DETAILS -->
+        <div class="container woo-entry">
+          <!-- SECTION CONTENT START -->
+          <div class="section-content">
+            <div class="row">
+              <!-- FROM STYEL 1 -->
+              <div class="col-lg-12 col-md-12 m-b30">
+                <!-- <div class="section-head">
+                                <h2 class="text-uppercase">Billing Information</h2>
+                                <div class="wt-separator-outer">
+                                    <div class="wt-separator site-bg-primary"></div>
+                                </div>
+                            </div> -->
+
+                <div class="wt-box bdr-4 bdr-gray-light p-a30">
+                  <form [formGroup]="myForm" (ngSubmit)="addNewUser()">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>Nom</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Entrez le nom"
+                            formControlName="nom"
+                          />
+                          <div class="error-messages">
+                            <ng-container
+                              *ngFor="let error of error_messages.nom"
+                            >
+                              <div
+                                class="error-message"
+                                *ngIf="
+                                  myForm.get('nom').hasError(error.type) &&
+                                  (myForm.get('nom').dirty ||
+                                    myForm.get('nom').touched ||
+                                    submitted)
+                                "
+                              >
+                                {{ error.message }}
+                              </div>
+                            </ng-container>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>Prénom</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Entrez le prénom"
+                            formControlName="prenom"
+                          />
+                          <div class="error-messages">
+                            <ng-container
+                              *ngFor="let error of error_messages.prenom"
+                            >
+                              <div
+                                class="error-message"
+                                *ngIf="
+                                  myForm.get('prenom').hasError(error.type) &&
+                                  (myForm.get('prenom').dirty ||
+                                    myForm.get('prenom').touched ||
+                                    submitted)
+                                "
+                              >
+                                {{ error.message }}
+                              </div>
+                            </ng-container>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>Adresse e-mail</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Entrez l'adresse e-mail"
+                            formControlName="email"
+                          />
+                          <ng-container
+                            *ngFor="let error of error_messages.email"
+                          >
+                            <div
+                              class="error-message"
+                              *ngIf="
+                                myForm.get('email').hasError(error.type) &&
+                                (myForm.get('email').dirty ||
+                                  myForm.get('email').touched ||
+                                  submitted)
+                              "
+                            >
+                              {{ error.message }}
+                            </div>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- <div> -->
+                    <button
+                      type="submit"
+                      value="submit"
+                      class="site-button site-bg-primary"
+                    >
+                      Enregistrer
+                    </button>
+                    <button
+                      type="submit"
+                      value="submit"
+                      class="site-button site-button-secondry m-3"
+                    >
+                      Annuler
+                    </button>
+                    <!-- </div> -->
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SECTION CONTENT END -->
+        </div>
+        <!-- PRODUCT DETAILS -->
+      </div>
+      <!-- CONTENT CONTENT END -->
+    </main>
+  </div>
+</div>
