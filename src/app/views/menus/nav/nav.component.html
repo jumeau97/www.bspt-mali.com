@@ -67,7 +67,7 @@
           </ng-container>
         </div>
 
-        <div class="col-auto text-md-end" *ngIf="!user; else profil">
+        <div class="col-auto text-md-end" *ngIf="!user.email; else profil">
           <a routerLink="/signin"
             ><button type="button" class="btn btn-outline-primary me-2">
               Se connecter

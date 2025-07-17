@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Offcanvas } from 'bootstrap';
+import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 import { GeneralService } from 'src/app/services/general/general.service';
 
 @Component({
@@ -250,8 +251,13 @@ export class NavComponent {
     // Ajoutez d'autres menus ici
   ];
 
-  constructor(private router: Router, private generalService: GeneralService) {
-    this.getcurrentUser();
+  constructor(
+    private router: Router,
+    private generalService: GeneralService,
+    private authService: AuthServiceService
+  ) {
+    // this.getcurrentUser();
+      this.user = this.authService.isAuthenticatedUser();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.activeRoute = event.urlAfterRedirects; // capture la route après les redirections si nécessaire

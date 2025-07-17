@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { User } from 'src/app/model/User';
+import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 import { GeneralService } from 'src/app/services/general/general.service';
 
 @Component({
@@ -12,13 +14,19 @@ import { GeneralService } from 'src/app/services/general/general.service';
 export class NavComponent {
   activeRoute!: string;
   menuSections: any[] = [];
+  roles: any;
 
   constructor(
     private router: Router,
     private generalService: GeneralService,
+    private authService: AuthServiceService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService
   ) {
+    // this.roles=authService.roles;
+    authService.user.roles.includes('ROLE_ADMIN')
+      ? (this.menuSections = this.adminMenus)
+      : (this.menuSections = this.partnersMenus);
     this.getcurrentUser();
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -60,6 +68,16 @@ export class NavComponent {
           title: 'Mes offres',
           iconClass: 'fas fa-shopping-cart',
           link: '/admin/mes-offres',
+        },
+        {
+          title: 'Reporting paiements',
+          iconClass: 'fas fa-shopping-cart',
+          link: '/admin/payment',
+        },
+        {
+          title: 'Actualités',
+          iconClass: 'fas fa-shopping-cart',
+          link: '/admin/informations',
         },
       ],
     },
@@ -127,8 +145,6 @@ export class NavComponent {
     this.generalService.getCurrentUser().subscribe({
       next: (result: any) => {
         // console.log('current user', result.user.enterprise.activities.map((activity:any) => activity.slug));
-
-        this.menuSections = this.adminMenus;
       },
       error: (error: any) => {},
     });
@@ -153,6 +169,9 @@ export class NavComponent {
           summary: 'Confirmed',
           detail: 'You have accepted',
         });
+
+        this.authService.user = new User();
+        console.log('user', this.authService.user);
         sessionStorage.removeItem('bstp-agent');
         this.router.navigateByUrl('/');
       },
@@ -161,6 +180,4 @@ export class NavComponent {
       },
     });
   }
-
-  logout() {}
 }

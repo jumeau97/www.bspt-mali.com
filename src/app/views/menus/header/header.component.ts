@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 import { GeneralService } from 'src/app/services/general/general.service';
 
 @Component({
@@ -8,20 +9,22 @@ import { GeneralService } from 'src/app/services/general/general.service';
 })
 export class HeaderComponent implements OnInit {
   user: any;
-  constructor(private generalService: GeneralService) {
-
+  constructor(
+    private generalService: GeneralService,
+    private authService: AuthServiceService
+  ) {
+  
   }
   ngOnInit(): void {}
 
-  getcurrentUser(){
+  getcurrentUser() {
     this.generalService.getCurrentUser().subscribe({
-      next:(result:any)=>{
-        console.log("result", result);
+      next: (result: any) => {
+        console.log('result', result);
 
-        this.user=result.user;
-        
+        this.user = result.user;
       },
-      error:(error:any)=>{}
+      error: (error: any) => {},
     });
   }
 }

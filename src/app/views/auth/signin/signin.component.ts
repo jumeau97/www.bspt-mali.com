@@ -4,6 +4,7 @@ import { GeneralService } from 'src/app/services/general/general.service';
 import { myConstants } from '../../utils';
 import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
+import { AuthServiceService } from 'src/app/services/auth-service/auth-service.service';
 
 @Component({
   selector: 'app-signin',
@@ -23,6 +24,7 @@ export class SigninComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private generalService: GeneralService,
+    private authService: AuthServiceService,
     private router: Router
   ) {
     this.myForm = this.fb.group({
@@ -57,9 +59,9 @@ export class SigninComponent implements OnInit {
           console.log('result', result.status);
 
           if (result.status == 1) {
-            console.log('conected..');
+            console.log('conected..', result);
 
-            const jsonString = JSON.stringify(result.token);
+            const jsonString = JSON.stringify(result);
             const encryptedData = CryptoJS.AES.encrypt(
               jsonString,
               myConstants.password
@@ -71,11 +73,14 @@ export class SigninComponent implements OnInit {
             this.router.navigate(['/admin']);
           } else {
             this.isLoading = false;
+      
+            
             this.authErrorMessage = result.message;
           }
         },
         error: (error: any) => {
           this.isLoading = false;
+                console.log("error", error);
           this.authErrorMessage = error.error.message;
         },
       });

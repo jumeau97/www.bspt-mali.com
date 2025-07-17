@@ -16,14 +16,14 @@ export class BstpInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const authToken = this.authService.isAuthenticatedUser();
-    console.log('token token', authToken);
+    const user = this.authService.isAuthenticatedUser();
+    // console.log('token token', user.token);
 
     // Si un jeton est disponible, ajoutez-le aux en-têtes de la requête
-    if (authToken) {
+    if (user.token) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${authToken}`,
+          Authorization: `Bearer ${user.token}`,
         },
       });
     }
